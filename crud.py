@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Recipe, Recipe_Ingredient, Pantry_ingredient, Ingredient, connect_to_db
+from model import db, User, Recipe, Recipe_Ingredient, Pantry_Ingredient, Ingredient, connect_to_db
 
 def create_user(email, password):
     """Create and return a new user."""
