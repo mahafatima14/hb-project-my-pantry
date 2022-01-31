@@ -1,14 +1,15 @@
 """Models for my_Pantry project App."""
 
 from datetime import datetime
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 class User(db.Model):
-    """A user."""
+    """A user.""" 
 
-    __tablename__ = "users"
+    __tablename__ = "users"  
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String)
