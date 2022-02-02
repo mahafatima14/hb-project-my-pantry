@@ -133,7 +133,7 @@ def load_ingredients():
         description = ''
     )
     model.db.session.add(salt)
-    
+
     peper = model.Ingredient(
         name = 'pepper',
         image = '', 
@@ -171,25 +171,23 @@ def load_recipe_ingredients():
     recipe_chickensoup = model.Recipe.query.filter_by(name = 'Chicken Soup').first()
     recipe_chickensoup_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'chicken bouillon') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper')).all()
 
-    
-    
-
 
     for ingredient in recipe_chickensoup_ingredients:
-        recipe_ingredient = model.Recipe_Ingredient(recipe = recipe_chickensoup, ingredient = ingredient)
+        recipe_ingredient = model.RecipeIngredient(recipe = recipe_chickensoup, ingredient = ingredient)
         # recipe_chickensoup.recipe_ingredients.append(recipe_ingredient)
         model.db.session.add(recipe_ingredient)
     
     
-    model.db.session.commit()
+    recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
+    recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
+
+    for ingredient in recipe_chocolatechip_ingredients:
+        recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
+        model.db.session.add(recipe_ingredient)
+    
+    model.db.session.commit()      
+
 
 load_recipe_ingredients()
-
-    
-    # recipe_chocolatechip = Recipe.query.filter_by(Recipe.name == 'chocolate_chip').first()
-    # recipe_chocolatechip_ingredients = Ingredient.query.filter(Ingredient.name == 'butter',Ingredient.name =='Vanilla extract')
-
-         
-
 
 

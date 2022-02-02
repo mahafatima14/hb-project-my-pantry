@@ -22,7 +22,7 @@ class User(db.Model):
 
 
 
-class Pantry_Ingredient(db.Model):
+class PantryIngredient(db.Model):
     """A table for ingredients user has available in their pantry."""
 
     __tablename__ = "pantry_ingredients"
@@ -58,10 +58,10 @@ class Recipe(db.Model):
     user = db.relationship("User", backref= "recipes")
    
     def __repr__(self):
-        return f"<recipe id={self.recipe_id} items={self.name}>"
+        return f"<recipe id={self.recipe_id} name={self.name}>"
 
 
-class Recipe_Ingredient(db.Model):
+class RecipeIngredient(db.Model):
     """A table for all the recipe ingredient"""
 
     __tablename__ = "recipe_ingredients"
