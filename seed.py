@@ -15,6 +15,19 @@ model.db.create_all()
 model.connect_to_db(server.app) 
 model.db.create_all()
 
+
+def load_users():
+    """Users"""
+
+    first_user = model.User(name = "maha", email = "test@test.test", password = "test")
+   
+    
+    
+    model.db.session.add(first_user)
+    model.db.session.commit()
+
+load_users()
+
 def load_recipes():
     """Recipes to use for the Pantry App"""
 
@@ -25,7 +38,8 @@ def load_recipes():
         created_at = '1 day ago',
         updated_at= '1 day ago',
         prep_time = '5 mins',
-        cooking_time = '10 mins'
+        cooking_time = '10 mins',
+        user_id = 1
         
 
     )
@@ -165,29 +179,34 @@ def load_ingredients():
 
 load_ingredients()
 
+
+
+
 def load_recipe_ingredients():
     """Add ingredients to recipes"""
 
     recipe_chickensoup = model.Recipe.query.filter_by(name = 'Chicken Soup').first()
     recipe_chickensoup_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'chicken bouillon') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper')).all()
-
+    
 
     for ingredient in recipe_chickensoup_ingredients:
         recipe_ingredient = model.RecipeIngredient(recipe = recipe_chickensoup, ingredient = ingredient)
-        # recipe_chickensoup.recipe_ingredients.append(recipe_ingredient)
+        #  recipe_chickensoup.recipe_ingredients.append(ingredient)
         model.db.session.add(recipe_ingredient)
-    
-    
-    recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
-    recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
 
-    for ingredient in recipe_chocolatechip_ingredients:
-        recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
-        model.db.session.add(recipe_ingredient)
+    
+    
+    # recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
+    # recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
+
+    # for ingredient in recipe_chocolatechip_ingredients:
+    #     recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
+    #     model.db.session.add(recipe_ingredient)
     
     model.db.session.commit()      
 
 
 load_recipe_ingredients()
+
 
 
