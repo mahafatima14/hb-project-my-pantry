@@ -53,14 +53,16 @@ def display_recipes():
     return Recipe.query.all()
 
 
+# def load_pantry_ingredients():
+#     """Add all the ingredients user enters"""
 
 
-def read_recipe_ingredient():
-    """Go through recipe ingredients and see if they match pantry ingredients"""
+
+# def read_recipe_ingredient():
+#     """Go through recipe ingredients and see if they match pantry ingredients"""
 
 
-def load_pantry_ingredients():
-    """Add all the ingredients user enters"""
+
 
 
 
