@@ -7,8 +7,8 @@ def create_user(email, password):
 
     user = User(email=email, password=password)
 
-    db.sessuon.add(user)
-    deb.session.commit()
+    db.session.add(user)
+    db.session.commit()
 
     return user
 

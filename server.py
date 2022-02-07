@@ -18,6 +18,24 @@ def homepage():
 
     return render_template("homepage.html")
 
+
+@app.route("/users", methods=["POST"])
+def register_user():
+    """Create a new user."""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    if not crud.does_this_user_exist_already(email):
+        crud.create_user(email, password)
+        flash("Account created! Please log in.")
+    else:
+        flash("This user already exists! Please try again")
+    
+    print("WE ARE PRINTNING")
+    return redirect("/")
+
+
 @app.route("/login", methods=["POST"])
 def process_login():
     """Process user login."""
@@ -32,7 +50,8 @@ def process_login():
         # Log in user by storing the user's email in session
         session["user_email"] = user.email
         flash(f"Welcome back, {user.email}!")
-
+    
+    print("WE ARE PRINTNING")
     return redirect("/")
 
 # @app.route("allrecipes")
