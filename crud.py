@@ -7,12 +7,39 @@ def create_user(email, password):
 
     user = User(email=email, password=password)
 
+    db.sessuon.add(user)
+    deb.session.commit()
+
     return user
 
 def get_user_by_email(email):
     """Return a user by email."""
 
     return User.query.filter(User.email == email).first()
+
+def get_user_by_id(user_id):
+    """Return a user by user ID."""
+    
+    return User.query.get(user_id)
+
+def does_this_user_exist_already(email):
+    """Return a boolean we can use for the if-statement in server.py."""
+
+    if get_user_by_email(email):
+        return True
+    else:
+        return False
+
+
+def does_the_password_match(email, password):
+    """Return a boolean we can use for the if-statement in server.py."""
+
+    if User.query.filter(User.email == email).first() and (
+        User.query.filter(User.password == password).first()):
+            return True
+            # return User.query.filter(User.email == email).first()
+    else:
+        return False
 
 
 def create_recipe(name, image, instructions, created_at, updated_at, prep_time, cooking_time, user = None):
@@ -54,7 +81,7 @@ def display_recipes():
 
 
 # def load_pantry_ingredients():
-#     """Add all the ingredients user enters"""
+#    """Add all the ingredients user enters"""
 
 
 

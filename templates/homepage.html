@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% block body %}
   <h1>Welcome to MyPantry!</h1>
 
@@ -7,8 +8,9 @@
     <li><a href="/users">View all users</a></li>
   </ul>
 
-  <h2>Create an Account</h2>
-  <form action="/users" method="POST">
+  
+  <h2>Log In</h2>
+  <form action="/login" method="POST">
     <p>
       Email <input type="text" name="email">
     </p>
@@ -22,8 +24,11 @@
     </p>
   </form>
 
-  <h2>Log In</h2>
-  <form action="/login" method="POST">
+  <p>
+    <small>New to the site? Now is a good time to create an account!</small>
+  </p>
+  <h2>Create an Account</h2>
+  <form action="/users" method="POST">
     <p>
       Email <input type="text" name="email">
     </p>

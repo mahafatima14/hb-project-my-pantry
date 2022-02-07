@@ -8,3 +8,4 @@ MarkupSafe==2.0.1
 psycopg2-binary==2.9.1
 SQLAlchemy==1.4.23
 Werkzeug==2.0.1
+Flask-DebugToolbar==0.11.0

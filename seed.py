@@ -18,19 +18,24 @@ model.db.create_all()
 
 def load_users():
     """Users"""
-
-    first_user = model.User(name = "maha", email = "test@test.test", password = "test")
-   
-    
-    
+    #seed the first user in the database and add to the session:
+    first_user = model.User(name = "first_user", email = "test@test.test", password = "test")
     model.db.session.add(first_user)
+
+    #seed the second user to the database and add to the session:
+    second_user= model.User(name = "second_user", email = "test1@test.test", password = "test")
+    model.db.session.add(second_user)
+
+    #commit users to the database
     model.db.session.commit()
+
 
 load_users()
 
 def load_recipes():
     """Recipes to use for the Pantry App"""
 
+    #create recipes and add then to the database:
     chicken_soup = model.Recipe(
         name = 'Chicken Soup',
         image_url = '',
@@ -53,7 +58,8 @@ def load_recipes():
         created_at = '1 day ago',
         updated_at = '1 day ago',
         prep_time = '20 mins',
-        cooking_time = '10 mins'
+        cooking_time = '10 mins',
+        user_id = 2
     )
     model.db.session.add(chocolatechip_cookies)
     model.db.session.commit() 
@@ -64,6 +70,7 @@ load_recipes()
 def load_ingredients():
     """ Ingredients in the database """
 
+    #create ingredients and add them to the Ingredienst table in the database:
     whole_chicken = model.Ingredient(
         name = 'whole chicken',
         image = '',
@@ -185,7 +192,10 @@ load_ingredients()
 def load_recipe_ingredients():
     """Add ingredients to recipes"""
 
+    #grab the chickensoup recipe by querying for it from the recipes table and save it in recipe_chickensoup variable
     recipe_chickensoup = model.Recipe.query.filter_by(name = 'Chicken Soup').first()
+
+    #grab the chickensoup ingredients by querying for them from the Ingredients table and save them to the recipe_chickensoup_ingredients variable
     recipe_chickensoup_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'chicken bouillon') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper')).all()
     
 
@@ -196,12 +206,12 @@ def load_recipe_ingredients():
 
     
     
-    # recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
-    # recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
+    recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
+    recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
 
-    # for ingredient in recipe_chocolatechip_ingredients:
-    #     recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
-    #     model.db.session.add(recipe_ingredient)
+    for ingredient in recipe_chocolatechip_ingredients:
+        recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
+        model.db.session.add(recipe_ingredient)
     
     model.db.session.commit()      
 
