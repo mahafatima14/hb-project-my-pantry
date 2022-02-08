@@ -55,7 +55,7 @@ def process_login():
         flash(f"Welcome back, {user.name}!")
     
     
-    return redirect("/")
+    return redirect("/")  #WORK ON REDIRECTING TO THE USERS PROFILE (WITH THE TWO FORMS -PANTRY ING AND ADD RECIPES) 
 
 @app.route("/logout")
 def logout():
@@ -76,15 +76,24 @@ def show_recipes():
 
     return render_template('allrecipes.html', recipes = recipes)
 
+@app.route("/users")
+def show_users():
+    """Display all users"""
+
+    users = crud.display_users()
+    
+
+    return render_template('allusers.html', users = users)
 
 
-@app.route("/users/<user_id>")
-def show_user(user_id):
-    """Show details on a particular user."""
 
-    user = crud.get_user_by_id(user_id)
+# @app.route("/users/<user_id>")
+# def show_user(user_id):
+#     """Show details on a particular user."""
 
-    return render_template("user_details.html", user=user)    
+#     user = crud.get_user_by_id(user_id)
+
+#     return render_template("user_details.html", user=user)    
 
 
 if __name__ == "__main__":

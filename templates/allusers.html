@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}All Users{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="title">Look up recipes by fellow Users!</h1>
+    <br>
+{% for user in users %}
+    <ul>
+        <li>
+            <a href="/user/{{ user.user_id }}">
+              {{ user.user_id }} <br>
+              {{ user.name }} <br>
+              {{ user.recipes }}
+            </a> 
+        </li>
+    </ul>
+
+{% endfor %}
+
+{% endblock body %}

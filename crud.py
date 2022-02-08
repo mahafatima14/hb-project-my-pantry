@@ -22,6 +22,11 @@ def get_user_by_id(user_id):
     
     return User.query.get(user_id)
 
+def display_users():
+    """Display all users"""
+
+    return User.query.all()
+
 def does_this_user_exist_already(email):
     """Return a boolean we can use for the if-statement in server.py."""
 
