@@ -57,16 +57,34 @@ def process_login():
     
     return redirect("/")
 
-@app.route("/recipes", methods=["POST"])
+@app.route("/logout")
+def logout():
+    """Log out."""
+
+    # removing the user from the session
+    del session["user_email"]
+    del session["user_name"]
+
+
+    return redirect("/")
+
+@app.route("/recipes")
 def show_recipes():
     """Show all recipes"""
 
     recipes = crud.display_recipes()
 
     return render_template('allrecipes.html', recipes = recipes)
-    
-    
 
+
+
+@app.route("/users/<user_id>")
+def show_user(user_id):
+    """Show details on a particular user."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("user_details.html", user=user)    
 
 
 if __name__ == "__main__":
