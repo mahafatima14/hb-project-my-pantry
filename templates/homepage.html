@@ -2,14 +2,8 @@
 {% block body %}
   <h1>Welcome to MyPantry!</h1>
 
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="/recipes">View all recipes</a></li>
-    <li><a href="/users">View all users</a></li>
-  </ul>
 
-  
-  <h2>Log In</h2>
+  <h4>Log In</h4>
   <form action="/login" method="POST">
     <p>
       Email <input type="text" name="email">
@@ -27,8 +21,11 @@
   <p>
     <small>New to the site? Now is a good time to create an account!</small>
   </p>
-  <h2>Create an Account</h2>
-  <form action="/users" method="POST">
+  <h4>Create an Account</h4>
+  <form action="/newusers" method="POST">
+    <p>
+      Name <input type="text" name="name">
+    </p>
     <p>
       Email <input type="text" name="email">
     </p>

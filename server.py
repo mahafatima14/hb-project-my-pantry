@@ -19,20 +19,21 @@ def homepage():
     return render_template("homepage.html")
 
 
-@app.route("/users", methods=["POST"])
+@app.route("/newusers", methods=["POST"])
 def register_user():
     """Create a new user."""
 
     email = request.form.get("email")
     password = request.form.get("password")
+    name = request.form.get("name")
 
     if not crud.does_this_user_exist_already(email):
-        crud.create_user(email, password)
+        crud.create_user(email, password, name)
         flash("Account created! Please log in.")
     else:
         flash("This user already exists! Please try again")
     
-    print("WE ARE PRINTNING")
+   
     return redirect("/")
 
 
@@ -47,18 +48,24 @@ def process_login():
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
     else:
-        # Log in user by storing the user's email in session
+        # Log in user by storing the user's email and name in session
         session["user_email"] = user.email
-        flash(f"Welcome back, {user.email}!")
+        session["user_name"] = user.name
+
+        flash(f"Welcome back, {user.name}!")
     
-    print("WE ARE PRINTNING")
+    
     return redirect("/")
 
-# @app.route("allrecipes")
-# def show_recipes():
-#     """Show all recipes"""
+@app.route("/recipes", methods=["POST"])
+def show_recipes():
+    """Show all recipes"""
 
-#     crud.
+    recipes = crud.display_recipes()
+
+    return render_template('allrecipes.html', recipes = recipes)
+    
+    
 
 
 

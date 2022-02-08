@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}All Recipes{% endblock %} {% block body %}
+
+<div class="container-fluid">
+    <h1 class="title">Explore all Recipes!</h1>
+    {% for recipe in recipes %}
+    <ul>
+        <li>
+            <a href="/recipes/{{ recipe.recipe_id }}">
+              {{ recipe.name }}
+            </a> 
+            
+        </li>
+    </ul>
+
+{% endfor %}
+
+{% endblock body %}

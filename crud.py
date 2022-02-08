@@ -2,10 +2,10 @@
 
 from model import db, User, Recipe, RecipeIngredient, PantryIngredient, Ingredient, connect_to_db
 
-def create_user(email, password):
+def create_user(email, password, name):
     """Create and return a new user."""
 
-    user = User(email=email, password=password)
+    user = User(email=email, password=password, name=name)
 
     db.session.add(user)
     db.session.commit()
@@ -78,6 +78,11 @@ def display_recipes():
 
     
     return Recipe.query.all()
+
+def get_recipe_by_user_id():
+    """Return the recipe based on user ID"""
+
+    return Recipe.query.get(user_id)
 
 
 # def load_pantry_ingredients():
