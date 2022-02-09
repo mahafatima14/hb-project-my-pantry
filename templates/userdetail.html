@@ -3,41 +3,53 @@
 {% block title %}{{ user.name }} - Profile Page  {% endblock %}
 
 
-<link rel="stylesheet" type="text/css" href="/static/userdetail.css" />
+<!-- <link rel="stylesheet" type="text/css" href="../static/userdetail.css" /> -->
 
+<style>
+/* div#fleft {
+    display: block !important;
+    background-color: blue !important;
+    width: 300px !important;
+    height: 500px !important;
+    float: left !important;
+    margin-left: 50px !important;
+} */
+</style>
 
 {% block body %}
 <h1> Welcome {{ user.name }}! Let's Cook!</h1>
 
-<div class="wrap">
-    <div class="fleft"></div>
-        <h2>Add Your Own Recipe to your Profile!</h2>
-     <form action="/addrecipe" method="POST">
-        
-            <div class="form-group">
-              <label for="addrecipe">Whats the Recipe</label>
-              <input type="text" class="form-control" id="addrecipe" placeholder="Example: Chicken Pot Pie">
-            </div>
-            <div class="form-group">
-              <label for="addingredients">Select Ingredients from our list! </label>
-              <select class="form-control" id="addingredients">
-                  {% for ingredient in ingredients %}
-
-                    <option>{{ ingredient.name }} </option>
-
-                    {% endfor %}
-                
-              </select>
-            </div>
+<div>
+  <div id="fleft">
+    <h2>Add Your Own Recipe to your Profile!</h2>
+    <form action="/addrecipe" method="POST">
+      <div class="form-group">
+        <label for="addrecipe">Whats the Recipe</label>
+        <input type="text" class="form-control" id="addrecipe" placeholder="Example: Chicken Pot Pie">
+      </div>
+      <div class="form-group">
+        <label for="addingredients">Select Ingredients from our list! </label>
+        <select class="form-control" id="addingredients">
+            {% for ingredient in ingredients %}
+              <option>{{ ingredient.name }}</option>
+            {% endfor %}
+        </select>
+      </div>
+    </form>
+  </div>
      
-    <div class="fright"></div>
+  <div id="fright">
     <form action="/login" method="POST">
-        <p>
-          Name <input type="text" name="name">
-        </p>
+      <p>
+        Name <input type="text" name="name">
+      </p>
+    </form>
+  </div>
 </div>
 
-
+<!-- <div id="fleft">
+Does this work
+</div> -->
 
 {% endblock %}
 

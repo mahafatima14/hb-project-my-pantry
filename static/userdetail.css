@@ -1,19 +1,22 @@
-.wrap {
+/* .wrap {
     width: 100%;
-    overflow:auo;
-    }
-    
-    .fleft {
-        float:left; 
-        width: 80%;
-    background:blue;
-        height: 400px;
-    }
-    
-    .fright {
+    overflow: auto;
+    } */
+
+div#fleft {
+    display: block !important;
+    background-color: blue !important;
+    width: 300px !important;
+    height: 500px !important;
+    float: left !important;
+    margin-left: 50px !important;
+}
+
+.fright {
+    display: block;
     float: right;
-        background:pink;
-        height: 400px;
-        width: 20%;
-    }
+    background-color:pink;
+    height: 300px;
+    width: 150px;
+}
     
