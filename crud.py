@@ -35,6 +35,10 @@ def does_this_user_exist_already(email):
     else:
         return False
 
+def display_ingredients():
+    """Display all ingredients from the ingredients table"""
+
+    return Ingredient.query.all()
 
 def does_the_password_match(email, password):
     """Return a boolean we can use for the if-statement in server.py."""

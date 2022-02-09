@@ -47,6 +47,9 @@ def process_login():
     user = crud.get_user_by_email(email)
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
+        
+        return redirect("/")
+     
     else:
         # Log in user by storing the user's email and name in session
         session["user_email"] = user.email
@@ -55,7 +58,7 @@ def process_login():
         flash(f"Welcome back, {user.name}!")
     
     
-    return redirect("/")  #WORK ON REDIRECTING TO THE USERS PROFILE (WITH THE TWO FORMS -PANTRY ING AND ADD RECIPES) 
+        return redirect(f"/users/{user.user_id}")  #WORK ON REDIRECTING TO THE USERS PROFILE (WITH THE TWO FORMS -PANTRY ING AND ADD RECIPES) 
 
 @app.route("/logout")
 def logout():
@@ -65,6 +68,7 @@ def logout():
     del session["user_email"]
     del session["user_name"]
 
+    flash("You are logged out!")
 
     return redirect("/")
 
@@ -87,13 +91,14 @@ def show_users():
 
 
 
-# @app.route("/users/<user_id>")
-# def show_user(user_id):
-#     """Show details on a particular user."""
+@app.route("/users/<user_id>")
+def show_user(user_id):
+    """Show details on a particular user."""
 
-#     user = crud.get_user_by_id(user_id)
+    user = crud.get_user_by_id(user_id)
+    ingredients = crud.display_ingredients()
 
-#     return render_template("user_details.html", user=user)    
+    return render_template("userdetail.html", user = user, ingredients = ingredients)    
 
 
 if __name__ == "__main__":

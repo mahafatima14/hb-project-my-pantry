@@ -1,0 +1,19 @@
+.wrap {
+    width: 100%;
+    overflow:auo;
+    }
+    
+    .fleft {
+        float:left; 
+        width: 80%;
+    background:blue;
+        height: 400px;
+    }
+    
+    .fright {
+    float: right;
+        background:pink;
+        height: 400px;
+        width: 20%;
+    }
+    

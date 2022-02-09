@@ -11,7 +11,10 @@
             <a href="/user/{{ user.user_id }}">
               {{ user.user_id }} <br>
               {{ user.name }} <br>
-              {{ user.recipes }}
+              {% for recipe in user.recipes %}
+                {{ recipe.name }}
+
+            {% endfor %}
             </a> 
         </li>
     </ul>
