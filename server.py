@@ -96,9 +96,17 @@ def show_user(user_id):
     """Show details on a particular user."""
 
     user = crud.get_user_by_id(user_id)
-    ingredients = crud.display_ingredients()
+    ingredients = crud.display_ingredients() 
 
     return render_template("userdetail.html", user = user, ingredients = ingredients)    
+
+@app.route("/addrecipe")
+def add_recipe():
+    """ Enable user to add recipe on their profile"""
+
+    recipe = crud.create_recipe()
+    recipe_ingredients = crud.upload_recipe_ingredient()
+
 
 
 if __name__ == "__main__":
