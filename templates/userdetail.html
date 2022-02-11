@@ -3,18 +3,7 @@
 {% block title %}{{ user.name }} - Profile Page  {% endblock %}
 
 
-<!-- <link rel="stylesheet" type="text/css" href="../static/userdetail.css" /> -->
 
-<style>
-/* div#fleft {
-    display: block !important;
-    background-color: blue !important;
-    width: 300px !important;
-    height: 500px !important;
-    float: left !important;
-    margin-left: 50px !important;
-} */
-</style>
 
 {% block body %}
 <h1> Welcome {{ user.name }}! Let's Cook!</h1>
@@ -24,32 +13,44 @@
     <h2>Add Your Own Recipe to your Profile!</h2>
     <form action="/addrecipe" method="POST">
       <div class="form-group">
-        <label for="addrecipe">Whats the Recipe</label>
         <input type="text" class="form-control" id="addrecipe" placeholder="Example: Chicken Pot Pie">
       </div>
       <div class="form-group">
         <label for="addingredients">Select Ingredients from our list! </label>
         <select class="form-control" id="addingredients">
+            <option>dropdown menu</option>
             {% for ingredient in ingredients %}
-              <option>{{ ingredient.name }}</option>
+                <option>{{ ingredient.name }}</option>
             {% endfor %}
+            <label for="addingredients">Select Ingredients from our list! </label>
+            <p>Or enter in you ingredients yourself: </p>
+            <br>
+            <input type="text" class="form-control" id="addingredients" placeholder="Or enter in you ingredients yourself:">
+
         </select>
       </div>
     </form>
   </div>
      
   <div id="fright">
-    <form action="/login" method="POST">
+      <h2> What items do you have on hand in your pantry?  </h2>
+      <h4> Enter your pantry ingredients and find matching recipes</h4>
+    <form action="/pantryitems" method="POST">
       <p>
-        Name <input type="text" name="name">
+        Pantry Ingredient: <input type="text" name="ingredient" value = "first ingredient"><br>
+        Pantry Ingredient: <input type="text" name="ingredient" value = "second ingredient"><br>
+        Pantry Ingredient: <input type="text" name="ingredient" value = "third ingredient"><br>
+        Pantry Ingredient: <input type="text" name="ingredient" value = "fourth ingredient"><br>
+        Pantry Ingredient: <input type="text" name="ingredient" value = "fifth ingredient"><br>
+        
+        
+
       </p>
     </form>
   </div>
 </div>
 
-<!-- <div id="fleft">
-Does this work
-</div> -->
+
 
 {% endblock %}
 
