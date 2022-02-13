@@ -58,7 +58,7 @@ def process_login():
         flash(f"Welcome back, {user.name}!")
     
     
-        return redirect(f"/users/{user.user_id}")  #WORK ON REDIRECTING TO THE USERS PROFILE (WITH THE TWO FORMS -PANTRY ING AND ADD RECIPES) 
+        return redirect(f"/users/{user.user_id}")  
 
 @app.route("/logout")
 def logout():
@@ -79,6 +79,7 @@ def show_recipes():
     recipes = crud.display_recipes()
 
     return render_template('allrecipes.html', recipes = recipes)
+
 
 @app.route("/users")
 def show_users():
@@ -104,8 +105,24 @@ def show_user(user_id):
 def add_recipe():
     """ Enable user to add recipe on their profile"""
 
-    recipe = crud.create_recipe()
-    recipe_ingredients = crud.upload_recipe_ingredient()
+    recipe = crud.create_recipe(name)
+    recipe_ingredients = crud.upload_recipe_ingredient(recipe)
+
+    # flash(f"Recipe Added {<user_id>}")
+
+    return redirect(f"/users/{user.user_id}")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

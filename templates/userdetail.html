@@ -12,22 +12,29 @@
   <div id="fleft">
     <h2>Add Your Own Recipe to your Profile!</h2>
     <form action="/addrecipe" method="POST">
-      <div class="form-group">
+    <div class="form-group">
         <input type="text" class="form-control" id="addrecipe" placeholder="Example: Chicken Pot Pie">
       </div>
-      <div class="form-group">
+    <div class="form-group">
         <label for="addingredients">Select Ingredients from our list! </label>
-        <select class="form-control" id="addingredients">
-            <option>dropdown menu</option>
+        Select all that apply to your recipe.
+        <select multiple class="form-control" id="addingredients">
+            
             {% for ingredient in ingredients %}
                 <option>{{ ingredient.name }}</option>
             {% endfor %}
             <label for="addingredients">Select Ingredients from our list! </label> 
             <br>
+            <br>
             <input type="text" class="form-control" id="addingredients" placeholder="Or enter in you ingredients yourself:">
-
-        </select>
-      </div>
+          </select>
+        </div>
+          <div class="form-group">
+              <label for="add_recipe_instructions"> Cooking Instructions: </label> 
+              <textarea class="form-group" id = "add_recipe_instructions" rows="8"
+      
+          </div>
+        </div>
     </form>
   </div>
      
