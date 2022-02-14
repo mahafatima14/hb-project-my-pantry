@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db, db
+from datetime import datetime
 import crud
 
 # configure a Jinja2 setting to make it throw errors for undefined variables
@@ -101,16 +102,26 @@ def show_user(user_id):
 
     return render_template("userdetail.html", user = user, ingredients = ingredients)    
 
-@app.route("/addrecipe")
+@app.route("/addrecipe", methods=["POST"])
 def add_recipe():
     """ Enable user to add recipe on their profile"""
 
-    recipe = crud.create_recipe(name)
-    recipe_ingredients = crud.upload_recipe_ingredient(recipe)
+    name = request.sys.args("recipename")
+    instructions = request.sys.args("recipe_instructions")
+    image = request.sys.args("recipe_image")
+    cooking_time = request.sys.args("recipe_cookng_time")
+    prep_time = request.sys.args("recipe_prep_time")
 
-    # flash(f"Recipe Added {<user_id>}")
+    now = datetime.now()
+    created_at = now.strftime("%H:%M:%S")
+    
+    
+    recipe = crud.create_recipe(name,image,instructions,created_at,updated_at,cooking_time,prep_time)
+    #recipe_ingredients = crud.upload_recipe_ingredient(recipe)
 
-    return redirect(f"/users/{user.user_id}")
+
+
+    return redirect(f"/users/{user.user_id}", name = name)
 
 
 

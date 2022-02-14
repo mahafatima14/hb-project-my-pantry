@@ -5,16 +5,17 @@
     font-family: Arial, ui-rounded, sans-serif;
 }
 
-.rating {
+.recipe {
     color: white;
     background-color: limegreen;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-    font-family: Arial, ui-rounded, sans-serif;
-    color: hsl(98, 75%, 14%);
-    background-color: hsl(22, 63%, 73%);
+    font-family: "Open Sans", sans-serif;
+    font-family: bold;
+    color: hsl(97, 20%, 63%);
+    background-color: hsl(22, 70%, 36%);
     align-self: center;
     text-align-last: center;
     /* text-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px; */
@@ -22,12 +23,13 @@ h1 {
 
 h2 {
     color: rgb(128, 68, 0);
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: initial;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
-    background-color: lightyellow;
-    font-family: Arial, Helvetica, sans-serif; 
+    background-color: rgb(250, 250, 250);
+    font-family: "Open Sans", sans-serif; 
 }
  
 nav {
@@ -37,9 +39,9 @@ nav {
   
   a {
     flex: 1;
-    background-color: #333;
+    background-color: rgb(172, 91, 91);
     color: #fff;
-    border: 1px solid;
+    border: 1px round;
     padding: 0.5rem;
     text-align: center;
     text-decoration: none;
@@ -55,16 +57,33 @@ nav {
   div#fleft {
     display: block !important;
     background-color: rgb(230, 191, 175) !important;
-    width: 300px !important;
-    height: 500px !important;
+    width: 400px !important;
+    height: 700px !important;
     float: left !important;
     margin-left: 50px !important;
 }
 div#fright {
     display: block !important;
     background-color: rgb(230, 191, 175) !important;
-    width: 300px !important;
-    height: 500px !important;
-    float: left !important;
+    width: 400px !important;
+    height: 700px !important;
+    float: left  !important;
     margin-left: 50px !important;
 }
+.title {
+    width: 600%;
+  }
+  
+button#entry-submit {
+    background-color: #dd8156;
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+  }
+  button#entry-submit:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  }
