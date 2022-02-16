@@ -19,7 +19,7 @@
     <div class="form-group">
         <label for="addingredients">Select Ingredients from our list! </label>
         Select all that apply to your recipe.
-        <select multiple class="form-control" id="addingredients">
+        <select multiple class="form-control" id="addingredients" name ="addingredients">
             
             {% for ingredient in ingredients %}
                 <option>{{ ingredient.name }}</option>
@@ -27,7 +27,7 @@
             <label for="addingredients">Select Ingredients from our list! </label> 
             <br>
             <br>
-            <input type="text" class="form-control" id="addingredients" placeholder="Or enter ingredients yourself:">
+            <input type="text" class="form-control" name = "addingredient" id="addingredients" placeholder="Or enter ingredients yourself:">
           </select>
         </div>
           <div class="form-group">
@@ -43,10 +43,10 @@
             <label for="add_recipe_preptime"> Prep time: </label>
             <input type="text" class="form-control" name ="recipe_prep_time" id="add_recipe_preptime" placeholder="In mins">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="recipe_created_at"> Created at:  </label>
-            <input type="text" readonly class="form-control" id="recipe_created_at" placeholder="datetime here*">
-          </div>
+            <input type="text" readonly class="form-control" id="recipe_created_at" placeholder="">
+          </div> -->
           <div class="form-group">
             <label for="add_picture">Add an Image</label>
             <input type="file" name="recipe_image" class="form-control-file" id="add_picture">

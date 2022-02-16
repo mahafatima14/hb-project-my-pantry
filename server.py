@@ -55,10 +55,10 @@ def process_login():
         # Log in user by storing the user's email and name in session
         session["user_email"] = user.email
         session["user_name"] = user.name
+        #session["user_id"] = user.user_id
 
         flash(f"Welcome back, {user.name}!")
-    
-    
+        
         return redirect(f"/users/{user.user_id}")  
 
 @app.route("/logout")
@@ -97,31 +97,43 @@ def show_users():
 def show_user(user_id):
     """Show details on a particular user."""
 
+    
     user = crud.get_user_by_id(user_id)
     ingredients = crud.display_ingredients() 
 
     return render_template("userdetail.html", user = user, ingredients = ingredients)    
 
+
 @app.route("/addrecipe", methods=["POST"])
 def add_recipe():
     """ Enable user to add recipe on their profile"""
 
-    name = request.sys.args("recipename")
-    instructions = request.sys.args("recipe_instructions")
-    image = request.sys.args("recipe_image")
-    cooking_time = request.sys.args("recipe_cookng_time")
-    prep_time = request.sys.args("recipe_prep_time")
-
+    name = request.form.get("recipename")
+    instructions = request.form.get("recipe_instructions")
+    image_url = request.form.get("recipe_image")
+    cooking_time = request.form.get("recipe_cookng_time")
+    prep_time = request.form.get("recipe_prep_time")
+    ingredients = request.form.getlist("addingredients")
+    quantities = request.form.getlist("quantity") # quantities[0] should be the quantity of ingredients[0], and so on
     now = datetime.now()
     created_at = now.strftime("%H:%M:%S")
+    updated_at = created_at
     
+    recipe = crud.create_recipe(name,image_url,instructions,cooking_time,prep_time,created_at,updated_at)
+    print(recipe, '##### RECIPE #####')
+    quantity = '1' # default value for now
+    print(ingredients, '******** INGREDIENTS ********')
     
-    recipe = crud.create_recipe(name,image,instructions,created_at,updated_at,cooking_time,prep_time)
-    #recipe_ingredients = crud.upload_recipe_ingredient(recipe)
-
-
-
-    return redirect(f"/users/{user.user_id}", name = name)
+    for ingredient in ingredients:
+        db_ingredient = crud.get_ingredient_by_name(ingredient)
+        # if not db_ingredient:
+        #     db_ingredient = crud.create_ingredient(name, image if image, description if description)
+        # recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
+        
+        if db_ingredient:
+            recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
+            print(recipe_ingredient, '^^^^^^ RECIPE INGREDIENT ^^^^^')
+    return redirect("/recipes")
 
 
 

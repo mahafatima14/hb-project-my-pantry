@@ -40,6 +40,13 @@ def display_ingredients():
 
     return Ingredient.query.all()
 
+
+def get_ingredient_by_name(name):
+    """Display all ingredients by name from the ingredients table"""
+
+    return Ingredient.query.filter_by(name = name).first()
+
+
 def does_the_password_match(email, password):
     """Return a boolean we can use for the if-statement in server.py."""
 
@@ -49,6 +56,7 @@ def does_the_password_match(email, password):
             # return User.query.filter(User.email == email).first()
     else:
         return False
+
 
 
 def create_recipe(name, image, instructions, created_at, updated_at, prep_time, cooking_time, user = None):
@@ -63,23 +71,27 @@ def create_recipe(name, image, instructions, created_at, updated_at, prep_time, 
     recipe = Recipe(
         user_id = user_id,
         name = name,
-        image = image,
+        image_url = image,
         instructions = instructions,
         created_at = created_at,
         updated_at = updated_at,
         prep_time = prep_time,
         cooking_time = cooking_time
-
     )
+    db.session.add(recipe)
+    db.session.commit()
+    
     return recipe
     
     
 
-def upload_recipe_ingredient(quantity, recipe, ingredient):
+def upload_recipe_ingredient(quantity, recipe_id, ingredient_id):
     """Create and return a new recipe"""
 
-    recipe_ingredient = RecipeIngredient(quantity = quantity,  recipe = recipe.recipe.id, ingredient = ingredient.ingredient.id)
-
+    recipe_ingredient = RecipeIngredient(quantity=quantity,  recipe_id=recipe_id, ingredient_id=ingredient_id)
+    db.session.add(recipe_ingredient)
+    db.session.commit()
+    
     return recipe_ingredient
 
 def display_recipes():
@@ -88,7 +100,7 @@ def display_recipes():
     
     return Recipe.query.all()
 
-def get_recipe_by_user_id():
+def get_recipe_by_user_id(user_id):
     """Return the recipe based on user ID"""
 
     return Recipe.query.get(user_id)

@@ -68,8 +68,9 @@ class RecipeIngredient(db.Model):
 
     __tablename__ = "recipe_ingredients"
 
-    quantity = db.Column(db.String)
     recipe_ingredient_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    quantity = db.Column(db.String) # Integer
+    # quanity_unit = db.Column(db.String)
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id"))
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.ingredient_id'))
 
