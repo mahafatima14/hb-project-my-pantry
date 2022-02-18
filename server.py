@@ -126,6 +126,9 @@ def add_recipe():
 
     for ingredient in ingredients:
         db_ingredient = crud.get_ingredient_by_name(ingredient)
+
+        quantity = request.form.get("quantity_"+ingredient)
+
         # if not db_ingredient:
         #     db_ingredient = crud.create_ingredient(name, image if image, description if description)
         # recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
