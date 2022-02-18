@@ -107,23 +107,23 @@ def show_user(user_id):
 @app.route("/addrecipe", methods=["POST"])
 def add_recipe():
     """ Enable user to add recipe on their profile"""
-
+   
+    #grab all the element for create_recipe from the userdetail.html form
     name = request.form.get("recipename")
     instructions = request.form.get("recipe_instructions")
     image_url = request.form.get("recipe_image")
     cooking_time = request.form.get("recipe_cookng_time")
     prep_time = request.form.get("recipe_prep_time")
     ingredients = request.form.getlist("addingredients")
-    quantities = request.form.getlist("quantity") # quantities[0] should be the quantity of ingredients[0], and so on
+    # quantities = request.form.getlist("quantity") # quantities[0] should be the quantity of ingredients[0], and so on
     now = datetime.now()
     created_at = now.strftime("%H:%M:%S")
     updated_at = created_at
     
-    recipe = crud.create_recipe(name,image_url,instructions,cooking_time,prep_time,created_at,updated_at)
-    print(recipe, '##### RECIPE #####')
+
     quantity = '1' # default value for now
-    print(ingredients, '******** INGREDIENTS ********')
-    
+    recipe = crud.create_recipe(name,image_url,instructions,cooking_time,prep_time,created_at,updated_at)
+
     for ingredient in ingredients:
         db_ingredient = crud.get_ingredient_by_name(ingredient)
         # if not db_ingredient:
@@ -131,8 +131,16 @@ def add_recipe():
         # recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
         
         if db_ingredient:
-            recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
+            recipe_ingredient = crud.upload_recipe_ingredient(quantity,recipe.recipe_id, db_ingredient.ingredient_id)
             print(recipe_ingredient, '^^^^^^ RECIPE INGREDIENT ^^^^^')
+
+    #call the crud function create_recipe and pass in the arguements to create a recipe
+    #recipe = crud.create_recipe(name,image_url,instructions,cooking_time,prep_time,created_at,updated_at)
+    
+    
+  
+    
+    
     return redirect("/recipes")
 
 

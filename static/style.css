@@ -28,7 +28,10 @@ h2 {
 }
 
 body {
+    background-image: url("img/MyPantry.jpg");
     background-color: rgb(250, 250, 250);
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: "Open Sans", sans-serif; 
 }
  

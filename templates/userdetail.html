@@ -2,7 +2,7 @@
 
 {% block title %}{{ user.name }} - Profile Page  {% endblock %}
 
-
+<script type="text/javascript" src="../static/ingredientquantity.js"></script>
 
 
 {% block body %}
@@ -19,7 +19,7 @@
     <div class="form-group">
         <label for="addingredients">Select Ingredients from our list! </label>
         Select all that apply to your recipe.
-        <select multiple class="form-control" id="addingredients" name ="addingredients">
+        <select multiple class="form-control" id="addingredients" name ="addingredients" onchange="onIngredientsSelectionChanged(this)">
             
             {% for ingredient in ingredients %}
                 <option>{{ ingredient.name }}</option>
@@ -27,8 +27,12 @@
             <label for="addingredients">Select Ingredients from our list! </label> 
             <br>
             <br>
-            <input type="text" class="form-control" name = "addingredient" id="addingredients" placeholder="Or enter ingredients yourself:">
+            <input type="text" class="form-control" name = "addingredient" id="addingredients" placeholder="Or enter ingredients yourself:" onchange="onIngredientsSelectionChangedtext(this)">
           </select>
+        <div>
+          Enter Quantity:
+        </div>
+        <div id="quantitycontainer"></div>
         </div>
           <div class="form-group">
               <label for="add_recipe_instructions"> Cooking Instructions: </label> 
@@ -78,7 +82,31 @@
   </div>
 </div>
 
+<script>
+  function onIngredientsSelectionChanged(select) {
 
+    console.log(select.value);
+    var options = select && select.options;
+    var opt;
+    document.getElementById("quantitycontainer").innerHTML = "";
+
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+       // result.push(opt.value || opt.text);
+        var textbox = document.createElement("input");
+        textbox.type = "text";
+        textbox.placeholder = opt.value;
+       //  textboxes.push())
+       document.getElementById("quantitycontainer").appendChild(textbox);
+      }
+     }
+    
+  //  let other=  document.getElementById("otheringredients").value.split(",");
+    
+  }
+</script>
 
 {% endblock %}
 

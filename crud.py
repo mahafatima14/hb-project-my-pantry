@@ -83,12 +83,17 @@ def create_recipe(name, image, instructions, created_at, updated_at, prep_time, 
     
     return recipe
     
-    
+def create_ingredient(name, image, description):
+    """Function to allow the user to input values into the ingredients table"""
+  
+
+   # db_ingredient 
+
 
 def upload_recipe_ingredient(quantity, recipe_id, ingredient_id):
     """Create and return a new recipe"""
 
-    recipe_ingredient = RecipeIngredient(quantity=quantity,  recipe_id=recipe_id, ingredient_id=ingredient_id)
+    recipe_ingredient = RecipeIngredient(quantity=quantity, recipe_id=recipe_id, ingredient_id=ingredient_id)
     db.session.add(recipe_ingredient)
     db.session.commit()
     
