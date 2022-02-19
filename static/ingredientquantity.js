@@ -1,5 +1,5 @@
 // console.log('js is working')
-// create a feature which takes in 
+ 
 
 function populatequantitycontainer(ingredients){
   document.getElementById("quantitycontainer").innerHTML = "";
@@ -19,8 +19,6 @@ function populatequantitycontainer(ingredients){
   }
 
 }
-
-
 function onIngredientsSelectionChanged(select) {
   
   const ingredients = []
@@ -40,9 +38,8 @@ function onIngredientsSelectionChanged(select) {
     }
    }
 populatequantitycontainer(ingredients)
- 
+  }
   
-}
 function onIngredientsSelectionChangedtext(input) {
 
   console.log(input.value);
