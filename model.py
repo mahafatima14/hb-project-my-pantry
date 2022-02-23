@@ -49,7 +49,7 @@ class Recipe(db.Model):
 
     recipe_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    name = db.Column(db.String)
+    name = db.Column(db.String, nullable = False)
     image_url = db.Column(db.String)
     instructions = db.Column(db.Text)
     created_at = db.Column(db.String)

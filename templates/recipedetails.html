@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block title %}List Recipes{% endblock %} {% block body %}
+
+<div class="container-fluid">
+    <h1> {{ recipe.name }} </h1>
+    
+    <ul>
+        <li>
+            
+              {{ recipe.instructions }}
+              {{ recipe.user.name }}
+              <br>
+              {% for ingredient in recipe.recipe_ingredients %}
+              {{ ingredient.ingredient.name }}
+              {% endfor %}
+        </li>
+    </ul>
+
+
+
+{% endblock body %}

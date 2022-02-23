@@ -46,7 +46,12 @@ def get_ingredient_by_name(name):
 
     return Ingredient.query.filter_by(name = name).first()
 
+def get_ingredient_by_id(ingredient_id):
+    """display all ingredients from the ingredients table by their id"""
 
+
+    return Ingredient.query.get(ingredient_id)
+    
 def does_the_password_match(email, password):
     """Return a boolean we can use for the if-statement in server.py."""
 
@@ -59,17 +64,13 @@ def does_the_password_match(email, password):
 
 
 
-def create_recipe(name, image, instructions, created_at, updated_at, prep_time, cooking_time, user = None):
+def create_recipe(name, image, instructions, created_at, updated_at, prep_time, cooking_time, user):
     """Function which allows the user to create recipes"""
 
     #recipe can either be uploaded by the user or it can be from the preseed database
-    if not user:
-        user_id = None
-    else:
-        user_id = user.user_id
     
     recipe = Recipe(
-        user_id = user_id,
+        user = user,
         name = name,
         image_url = image,
         instructions = instructions,
@@ -83,12 +84,10 @@ def create_recipe(name, image, instructions, created_at, updated_at, prep_time, 
     
     return recipe
     
-def create_ingredient(name, image, description):
-    """Function to allow the user to input values into the ingredients table"""
-  
+def get_recipe_by_id(recipe_id):
+    """Get recipe by its id"""
 
-   # db_ingredient 
-
+    return Recipe.query.get(recipe_id)
 
 def upload_recipe_ingredient(quantity, recipe_id, ingredient_id):
     """Create and return a new recipe"""
@@ -111,17 +110,14 @@ def get_recipe_by_user_id(user_id):
     return Recipe.query.get(user_id)
 
 
-# def load_pantry_ingredients():
-#    """Add all the ingredients user enters"""
+def upload_pantry_ingredient(submitted_at,user_id,ingredient_id):
+    """Add the pantry ingredients to the database under the user_id"""
 
+    pantry_ingredients = PantryIngredient(submitted_at = submitted_at, user_id = user_id, ingredient_id = ingredient_id)
+    db.session.add(pantry_ingredients)
+    deb.session.commit()
 
-
-# def read_recipe_ingredient():
-#     """Go through recipe ingredients and see if they match pantry ingredients"""
-
-
-
-
+    return pantry_ingredients
 
 
 

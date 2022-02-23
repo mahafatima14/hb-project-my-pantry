@@ -12,6 +12,7 @@
 }
 
 h1 {
+    position:sticky;
     font-family: "Open Sans", sans-serif;
     font-family: bold;
     color: hsl(97, 20%, 63%);
@@ -61,17 +62,17 @@ nav {
     display: block !important;
     background-color: rgb(230, 191, 175) !important;
     width: 400px !important;
-    height: 700px !important;
+    height: 900px !important;
     float: left !important;
-    margin-left: 50px !important;
+    margin-left: 100px !important;
 }
 div#fright {
     display: block !important;
     background-color: rgb(230, 191, 175) !important;
     width: 400px !important;
-    height: 700px !important;
+    height: 900px !important;
     float: left  !important;
-    margin-left: 50px !important;
+    margin-left: 100px !important;
 }
 .title {
     width: 600%;
