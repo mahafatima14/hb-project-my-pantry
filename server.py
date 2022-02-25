@@ -154,31 +154,37 @@ def add_recipe():
 
         # if not db_ingredient:
         #     db_ingredient = crud.create_ingredient(name, image if image, description if description)
-        # recipe_ingredient = crud.upload_recipe_ingredient(quantity, recipe.recipe_id, db_ingredient.ingredient_id)
-        
+       
         if db_ingredient:
             recipe_ingredient = crud.upload_recipe_ingredient(quantity,recipe.recipe_id, db_ingredient.ingredient_id)
             
 
     return redirect("/recipes")
 
-@app.route("/pantryform", methods=["POST"])
+@app.route("/pantryitems", methods=["POST"])
 def upload_pantry_form():
     """Uploads the pantry form"""
     user_id = session.get("user.user_id")
-    user = crud.get_user_by_id("user_id")
-    ingredient = crud.get_ingredient_by_id(ingredient_id)
-    pantry_ingredients = request.form.getlist("addpantryingredients")
+    user = crud.get_user_by_id(user_id)
     now = datetime.now()
-    submitted_at = now.strftime("%H:%M:%S")
+
     pantry_ingredients = request.form.getlist("addpantryingredients")
-    print(pantry_ingredients, "*****************************")
+    # recipes = []
+    recipes = {}
+    for ingredient in pantry_ingredients:
+        db_ingredient = crud.get_ingredient_by_name(ingredient)
+        pantry_ingredient = crud.upload_pantry_ingredient(submitted_at = now, user_id = user, ingredient = db_ingredient)
+        ingredient_recipes = crud.find_recipes_by_ingredient_id(db_ingredient.ingredient_id)
+        recipes.setdefault(ingredient, ingredient_recipes)
+        
+        # find_recipes_by_ingredient_id(db_ingredient.ingredient_id) will return a list of recipes for this ingredient otherwise it'll return []
+        # take the list from the above step and just extend it to recipes OR
+        # recipes.setdefault(ingredient, recipes)
+        
+        # setdefault(key, value) is a dict method that takes in a key that you're looking for in your dictionary, and IF that key doesn't exist, 
+        # it'll set the key to be the value set as the second argument 
 
-    pantry_ingredients = crud.upload_pantry_ingredient(submitted_at = submitted_at, user_id = user, ingredient_id = ingredient)
-
-
- 
-    return render_template("recipesfound.html")
+    return render_template("recipesfound.html", recipes = recipes)
 
 
 

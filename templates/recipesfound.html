@@ -1,7 +1,20 @@
 {% extends 'base.html' %} {% block title %}List Recipes{% endblock %} {% block body %}
 
 <div class="container-fluid">
-    <h1> {{ pantryitems }} </h1>
+    
+    {% for ingredient, recipe_list in recipes.items() %}
+    <h3>{{ ingredient }}</h3>
+    <ul>
+        {% if recipe_list %}
+            {% for recipe in recipe_list %}
+                <li>{{ recipe.name }}</li>
+            {% endfor %}
+        {% else %}
+            <h4>No recipes found</h4>
+        {% endif %}
+    </ul>
+    {% endfor %}
+
 
     {% endblock body %}
     

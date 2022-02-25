@@ -51,7 +51,7 @@ def get_ingredient_by_id(ingredient_id):
 
 
     return Ingredient.query.get(ingredient_id)
-    
+
 def does_the_password_match(email, password):
     """Return a boolean we can use for the if-statement in server.py."""
 
@@ -61,8 +61,7 @@ def does_the_password_match(email, password):
             # return User.query.filter(User.email == email).first()
     else:
         return False
-
-
+        
 
 def create_recipe(name, image, instructions, created_at, updated_at, prep_time, cooking_time, user):
     """Function which allows the user to create recipes"""
@@ -110,17 +109,26 @@ def get_recipe_by_user_id(user_id):
     return Recipe.query.get(user_id)
 
 
-def upload_pantry_ingredient(submitted_at,user_id,ingredient_id):
+def upload_pantry_ingredient(submitted_at,user_id,ingredient):
     """Add the pantry ingredients to the database under the user_id"""
 
-    pantry_ingredients = PantryIngredient(submitted_at = submitted_at, user_id = user_id, ingredient_id = ingredient_id)
+    pantry_ingredients = PantryIngredient(submitted_at = submitted_at, user_id = user_id, ingredient = ingredient)
     db.session.add(pantry_ingredients)
-    deb.session.commit()
+    db.session.commit()
 
     return pantry_ingredients
 
+def find_recipes_by_ingredient_id(ingredient_id):
+    """Return the recipe given its ingredients"""
 
-
+    recipes = []
+    recipe_ingredients = RecipeIngredient.query.filter_by(ingredient_id=ingredient_id).all()
+    
+    for recipe_ingredient in recipe_ingredients:
+        recipes.append(recipe_ingredient.recipe)
+        
+    # return [recipe_ingredient.recipe for recipe_ingredient in recipe_ingredients]
+    return recipes
 
 
 
