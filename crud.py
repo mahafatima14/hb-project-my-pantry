@@ -103,6 +103,11 @@ def display_recipes():
     
     return Recipe.query.all()
 
+def get_recipe_by_name(name):
+    """Get recipe by name"""
+
+    return Recipe.query.filter_by(name = name).first()
+
 def get_recipe_by_user_id(user_id):
     """Return the recipe based on user ID"""
 

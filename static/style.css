@@ -1,7 +1,7 @@
 /* Style for mypantry Site */
 
 .flash-msg {
-    background-color: rgb(172, 144, 238);
+    background-color: rgb(112, 89, 199);
     font-family: Arial, ui-rounded, sans-serif;
 }
 
@@ -43,11 +43,11 @@ nav {
   
   a {
     flex: 1;
-    background-color: rgb(172, 91, 91);
-    color: #fff;
+    /* background-color: rgb(172, 80, 80); */
+    color: rgb(66, 19, 19);
     border: 1px round;
     padding: 0.5rem;
-    text-align: center;
+    /* text-align: center; */
     text-decoration: none;
     transition: all 0.5s ease-out;
   }

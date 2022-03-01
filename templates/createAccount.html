@@ -3,8 +3,14 @@
   <!-- <h1>MyPantry!</h1> -->
 
 
-  <h4>Log In</h4>
-  <form action="/login" method="POST">
+  
+
+
+  <h4>Create an Account</h4>
+  <form action="/newusers" method="POST">
+    <p>
+      Name <input required type="text" name="name">
+    </p>
     <p>
       Email <input required type="text" name="email">
     </p>
@@ -17,8 +23,6 @@
       <input type="submit">
     </p>
   </form>
-
-
 
 
 {% endblock %}

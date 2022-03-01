@@ -17,6 +17,11 @@ def homepage():
     """View homepage."""
     return render_template("homepage.html")
 
+@app.route("/create-account")
+def register_users():
+    """Create a new user."""
+
+    return render_template('createAccount.html')
 
 @app.route("/newusers", methods=["POST"])
 def register_user():
@@ -185,6 +190,16 @@ def upload_pantry_form():
         # it'll set the key to be the value set as the second argument 
 
     return render_template("recipesfound.html", recipes = recipes)
+
+
+# @app.route('/search', methods=["POST"])
+# def search_recipes():
+    
+#     recipe_searched = request.form.get("recipesearched")
+#     results = crud.get_recipe_by_name(recipe_searched)
+   
+#     return render_template('search.html')
+#                         
 
 
 
