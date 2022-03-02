@@ -39,7 +39,7 @@
     </button>
     <div class="collapse navbar-collapse" id = "#navbarmenu">
     <ul class="navbar-nav ml-auto">
-      {% if 'user.user_id' not in session %}
+      {% if 'user_id' not in session %}
       <li class="nav-item">
         <a href="#" class = "nav-link">About</a>
       </li>
@@ -47,6 +47,9 @@
         <a href="/create-account" class = "nav-link">Create Account</a>
       </li>
       {% else %}
+      <li class="nav-item">
+        <a href="#" class = "nav-link">About</a>
+      </li>
       <li class="nav-item">
         <a href="/recipes" class = "nav-link">Recipes</a>
       </li>

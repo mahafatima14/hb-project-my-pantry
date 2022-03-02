@@ -98,6 +98,21 @@ class Ingredient(db.Model):
 
 
 
+class like(db.Model):
+    """A table to keep track of all the likes on a recipe"""
+
+    __tablename__ = "likes"
+
+    like_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id"))
+
+    def __repr__(self):
+        return f"<like id={self.like_id}>"
+
+
+
+
 def connect_to_db(flask_app, db_uri="postgresql:///pantry", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo

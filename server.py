@@ -61,6 +61,7 @@ def process_login():
         session["user_id"] = user.user_id
 
         flash(f"Welcome back, {user.name}!")
+
         
         return redirect(f"/users/{user.user_id}")  
 
@@ -192,14 +193,14 @@ def upload_pantry_form():
     return render_template("recipesfound.html", recipes = recipes)
 
 
-# @app.route('/search', methods=["POST"])
-# def search_recipes():
+@app.route('/search', methods=["POST"])
+def search_recipes():
     
-#     recipe_searched = request.form.get("recipesearched")
-#     results = crud.get_recipe_by_name(recipe_searched)
+    recipe_searched = request.form.get("recipesearched")
+    results = crud.get_recipe_by_name(recipe_searched)
    
-#     return render_template('search.html')
-#                         
+    return render_template('search.html', results = results)
+                        
 
 
 

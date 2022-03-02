@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}Search Results{% endblock %} 
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+    {% if results %}
+        
+        <a href="/recipes/{{ results.recipe_id }}">{{ results.name }}</a> 
+       
+    {% else %}
+        Sorry, no recipes found. 
+        <a href= "/users/{{ session.user_id }}">Would you like to add a recipe?</a>
+
+{% endif %}
+    
+    
+
+    
+
+{% endblock body %}
+
+
+
+
+
+
+
+
