@@ -98,7 +98,7 @@ class Ingredient(db.Model):
 
 
 
-class like(db.Model):
+class Like(db.Model):
     """A table to keep track of all the likes on a recipe"""
 
     __tablename__ = "likes"
@@ -106,6 +106,9 @@ class like(db.Model):
     like_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id"))
+
+    recipe = db.relationship("Recipe", backref="likes")
+    user = db.relationship("User", backref="likes")
 
     def __repr__(self):
         return f"<like id={self.like_id}>"

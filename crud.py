@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Recipe, RecipeIngredient, PantryIngredient, Ingredient, connect_to_db
+from model import db, User, Recipe, RecipeIngredient, PantryIngredient, Ingredient, Like, connect_to_db
 
 def create_user(email, password, name):
     """Create and return a new user."""
@@ -136,6 +136,15 @@ def find_recipes_by_ingredient_id(ingredient_id):
     return recipes
 
 
+def add_like(user,recipe):
+    """add a like feature to recipes"""
+
+  
+
+    likes = Like(user=user, recipe=recipe)
+    db.session.add(likes)
+    db.session.commit()
+    return likes
 
 
 

@@ -76,6 +76,9 @@ def logout():
     
     if session.get("user_name"):
         del session["user_name"]
+    
+    if session.get("user_id"):
+        del session["user_id"]
         
     flash("You are logged out!")
 
@@ -201,6 +204,21 @@ def search_recipes():
    
     return render_template('search.html', results = results)
                         
+
+@app.route('/like', methods = ["POST"])
+def like_a_recipe():
+     """Like a recipe"""
+
+     user_id = session.get("user_id")
+     user = crud.get_user_by_id(user_id)
+     recipe_id = request.form.get("recipe_id")
+     recipe = crud.get_recipe_by_id(recipe_id)
+
+     likes = crud.add_like(user,recipe)
+
+     return redirect(f'/recipes/{recipe.recipe_id}')
+
+    
 
 
 

@@ -6,6 +6,15 @@
 <h1> Welcome {{ user.name }}! Let's Cook!</h1>
 
 <div>
+  <h2>Likes</h2>
+  <ul>
+  {% for like in user.likes %}
+    <li>{{ like.recipe.name }}</li>
+  {% endfor %}
+  </ul>
+</div>
+
+<div>
   <div id="fleft">
     <h2>Add Your Own Recipe to your Profile!</h2>
 

@@ -31,15 +31,14 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {% if not session.get('user_id') %}
     <a href="/" class="navbar-brand">MyPantry</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id = "#navbarmenu">
     <ul class="navbar-nav ml-auto">
-      {% if 'user_id' not in session %}
       <li class="nav-item">
         <a href="#" class = "nav-link">About</a>
       </li>
@@ -47,6 +46,7 @@
         <a href="/create-account" class = "nav-link">Create Account</a>
       </li>
       {% else %}
+      <a href="/users/{{ session.user_id }}" class="navbar-brand">MyPantry</a>
       <li class="nav-item">
         <a href="#" class = "nav-link">About</a>
       </li>
@@ -56,25 +56,18 @@
       <li class="nav-item">
         <a href="/logout" class = "nav-link">Log Out</a>
       </li>
+      <form method = "POST" action = "/search" class = "d-flex">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="recipes by name" aria-label="Search" name = "recipesearched">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
       {% endif %}
 
     </ul>
-    <form method = "POST" action = "/search" class = "d-flex">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="recipes by name" aria-label="Search" name = "recipesearched">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
+    
     </div>
   </nav>
-  <!-- <class nav>
-    <a href="/">Home</a>
-    <a href="#">About Us</a>
-    <a href="/recipes">Recipes</a>
-    <a href="/users">Users</a>
-    <a href="/logout">Log Out</a>
-</nav>
-</class> -->
+ 
 
     {% for msg in get_flashed_messages() %}
     <p class="flash-msg">

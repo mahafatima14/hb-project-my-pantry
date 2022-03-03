@@ -45,6 +45,7 @@ def load_recipes():
         prep_time = '5 mins',
         cooking_time = '10 mins',
         user_id = 1
+      
         
 
     )
@@ -60,6 +61,7 @@ def load_recipes():
         prep_time = '20 mins',
         cooking_time = '10 mins',
         user_id = 2
+      
     )
     model.db.session.add(chocolatechip_cookies)
     model.db.session.commit() 

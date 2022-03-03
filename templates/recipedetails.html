@@ -2,11 +2,13 @@
 
 <div class="container-fluid">
     <h1> {{ recipe.name }} </h1>
+    <h2> {{ recipe.recipe_id }}</h2>
     
     <ul>
         <li>
             
               {{ recipe.instructions }}
+              <br>
               {{ recipe.user.name }}
               <br>
               {% for ingredient in recipe.recipe_ingredients %}
@@ -14,7 +16,15 @@
               {% endfor %}
         </li>
     </ul>
+</div>
+ <!-- Like button     -->
+<div class="form-check">
+    <form action = "/like" method="POST">
+        <button type="submit" class="btn btn-primary mb-2">Like this recipe?</button>    
+        
+        <input type="hidden" id="recipeId" name="recipe_id" value={{ recipe.recipe_id }}></input>
+    </form>
+<p><strong> This recipe has been liked {{ recipe.likes|length }} times </strong></p>
 
-
-
+      
 {% endblock body %}
