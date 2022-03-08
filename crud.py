@@ -139,8 +139,6 @@ def find_recipes_by_ingredient_id(ingredient_id):
 def add_like(user,recipe):
     """add a like feature to recipes"""
 
-  
-
     likes = Like(user=user, recipe=recipe)
     db.session.add(likes)
     db.session.commit()

@@ -6,10 +6,10 @@
 <h1> Welcome {{ user.name }}! Let's Cook!</h1>
 
 <div>
-  <h2>Likes</h2>
+  <h2>Recipes you liked:</h2>
   <ul>
   {% for like in user.likes %}
-    <li>{{ like.recipe.name }}</li>
+    <li><a href= "/recipes/{{ like.recipe_id }}">{{ like.recipe.name }}</a></li>
   {% endfor %}
   </ul>
 </div>

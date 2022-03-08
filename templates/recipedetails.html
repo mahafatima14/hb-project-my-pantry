@@ -6,13 +6,13 @@
     
     <ul>
         <li>
-            
+                
               {{ recipe.instructions }}
               <br>
               {{ recipe.user.name }}
               <br>
               {% for ingredient in recipe.recipe_ingredients %}
-              {{ ingredient.ingredient.name }}
+              <li>{{ ingredient.ingredient.name }}</li>
               {% endfor %}
         </li>
     </ul>
@@ -20,7 +20,17 @@
  <!-- Like button     -->
 <div class="form-check">
     <form action = "/like" method="POST">
-        <button type="submit" class="btn btn-primary mb-2">Like this recipe?</button>    
+      
+        {% if not recipe.user.likes %}
+        <button type="submit" class="btn btn-primary mb-2" >Like this recipe?</button> 
+
+        {% else %}
+
+        <button type="button" class="btn btn-primary mb-2" disabled>Liked </button> 
+        
+        {% endif %}  
+
+       
         
         <input type="hidden" id="recipeId" name="recipe_id" value={{ recipe.recipe_id }}></input>
     </form>
