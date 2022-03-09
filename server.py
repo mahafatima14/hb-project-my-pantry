@@ -96,10 +96,17 @@ def show_recipes():
 @app.route("/recipes/<recipe_id>")
 def show_recipe(recipe_id):
 
-    user = session.get("user_email")
+    user = session.get("user_id")
+    liked = False
     if user:
         recipe = crud.get_recipe_by_id(recipe_id)
-        return render_template("recipedetails.html", recipe = recipe) 
+    
+        for like in recipe.likes:
+            if like.recipe == recipe:
+                liked = True
+        
+
+        return render_template("recipedetails.html", recipe = recipe, liked = liked) 
     else:
         flash("Please log in to view all recipes!")
         return redirect("/")
@@ -207,16 +214,17 @@ def search_recipes():
 
 @app.route('/like', methods = ["POST"])
 def like_a_recipe():
-     """Like a recipe"""
+    """Like a recipe"""
 
-     user_id = session.get("user_id")
-     user = crud.get_user_by_id(user_id)
-     recipe_id = request.form.get("recipe_id")
-     recipe = crud.get_recipe_by_id(recipe_id)
+    user_id = session.get("user_id")
+    user = crud.get_user_by_id(user_id)
+    recipe_id = request.form.get("recipe_id")
+    recipe = crud.get_recipe_by_id(recipe_id)
 
-     likes = crud.add_like(user,recipe)
 
-     return redirect(f'/recipes/{recipe.recipe_id}')
+    likes = crud.add_like(user,recipe)
+
+    return redirect(f'/recipes/{recipe.recipe_id}')
 
     
 

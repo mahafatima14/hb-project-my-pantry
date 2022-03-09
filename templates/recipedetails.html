@@ -20,15 +20,17 @@
  <!-- Like button     -->
 <div class="form-check">
     <form action = "/like" method="POST">
-      
-        {% if not recipe.user.likes %}
-        <button type="submit" class="btn btn-primary mb-2" >Like this recipe?</button> 
-
-        {% else %}
-
+        
+        {% if liked == False %}
         <button type="button" class="btn btn-primary mb-2" disabled>Liked </button> 
         
+
+        {% else %}
+        <button type="submit" class="btn btn-primary mb-2" >Like this recipe?</button> 
+       
+        
         {% endif %}  
+       
 
        
         
@@ -38,3 +40,6 @@
 
       
 {% endblock body %}
+
+
+<script> </script>
