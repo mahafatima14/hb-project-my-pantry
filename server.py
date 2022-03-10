@@ -96,12 +96,13 @@ def show_recipes():
 @app.route("/recipes/<recipe_id>")
 def show_recipe(recipe_id):
 
-    user = session.get("user_id")
+    user_id = session.get("user_id")
+    user = crud.get_user_by_id(user_id)
     liked = False
     if user:
         recipe = crud.get_recipe_by_id(recipe_id)
     
-        for like in recipe.likes:
+        for like in user.likes:
             if like.recipe == recipe:
                 liked = True
         

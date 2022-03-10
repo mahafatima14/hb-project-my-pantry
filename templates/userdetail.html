@@ -4,7 +4,14 @@
 
 {% block body %}
 <h1> Welcome {{ user.name }}! Let's Cook!</h1>
-
+<div>
+  <h2>My recipes:</h2>
+  <ul>
+  {% for recipe in user.recipes %}
+    <li><a href= "/recipes/{{ recipe.user_id }}">{{ recipe.name }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
 <div>
   <h2>Recipes you liked:</h2>
   <ul>
