@@ -190,7 +190,7 @@ def upload_pantry_form():
     recipes = {}
     for ingredient in pantry_ingredients:
         db_ingredient = crud.get_ingredient_by_name(ingredient)
-        pantry_ingredient = crud.upload_pantry_ingredient(submitted_at = now, user_id = user, ingredient = db_ingredient)
+        pantry_ingredient = crud.upload_pantry_ingredient(submitted_at = now, user_id = user_id, ingredient = db_ingredient)
         ingredient_recipes = crud.find_recipes_by_ingredient_id(db_ingredient.ingredient_id)
         recipes.setdefault(ingredient, ingredient_recipes)
         
