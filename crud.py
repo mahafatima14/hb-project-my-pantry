@@ -114,10 +114,10 @@ def get_recipe_by_user_id(user_id):
     return Recipe.query.get(user_id)
 
 
-def upload_pantry_ingredient(submitted_at,user_id,ingredient):
+def upload_pantry_ingredient(submitted_at,user,ingredient):
     """Add the pantry ingredients to the database under the user_id"""
 
-    pantry_ingredients = PantryIngredient(submitted_at = submitted_at, user_id = user_id, ingredient = ingredient)
+    pantry_ingredients = PantryIngredient(submitted_at = submitted_at, user = user, ingredient = ingredient)
     db.session.add(pantry_ingredients)
     db.session.commit()
 

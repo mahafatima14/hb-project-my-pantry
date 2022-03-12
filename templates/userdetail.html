@@ -8,7 +8,7 @@
   <h2>My recipes:</h2>
   <ul>
   {% for recipe in user.recipes %}
-    <li><a href= "/recipes/{{ recipe.user_id }}">{{ recipe.name }}</a></li>
+    <li><a href= "/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></li>
   {% endfor %}
   </ul>
 </div>
@@ -20,6 +20,17 @@
   {% endfor %}
   </ul>
 </div>
+<div>
+  <h2>Previous Pantry :</h2>
+  <ul>
+  {% for submission in user.pantry_ingredients %}
+    
+    <li>{{ submission.submitted_at }} {{ submission.ingredient.name }} </li>
+
+  {% endfor %}
+  </ul>
+</div>
+
 
 <div>
   <div id="fleft">
@@ -82,7 +93,7 @@
   <div id="fright">
       <h2> What items do you have on hand in your pantry? </h2>
      
-    <form action="/pantryitems" method="POST">
+    <form action="/pantryitems" method="GET">
       <label for="addpantryingredients">Select ingredients and see which recipes you can cook</label>
       <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients">
             

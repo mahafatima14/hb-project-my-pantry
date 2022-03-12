@@ -64,6 +64,7 @@ def process_login():
 
         
         return redirect(f"/users/{user.user_id}")  
+    
 
 @app.route("/logout")
 def logout():
@@ -178,22 +179,32 @@ def add_recipe():
 
     return redirect("/recipes")
 
-@app.route("/pantryitems", methods=["POST"])
+@app.route("/pantryitems", methods=["GET"])
 def upload_pantry_form():
     """Uploads the pantry form"""
-    user_id = session.get("user.user_id")
+    user_id = session.get("user_id")
     user = crud.get_user_by_id(user_id)
     now = datetime.now()
 
-    pantry_ingredients = request.form.getlist("addpantryingredients")
-    # recipes = []
+    pantry_ingredients = request.args.getlist("addpantryingredients")
+    all_recipes = []
     recipes = {}
+    db_ingredients = []
     for ingredient in pantry_ingredients:
         db_ingredient = crud.get_ingredient_by_name(ingredient)
-        pantry_ingredient = crud.upload_pantry_ingredient(submitted_at = now, user_id = user_id, ingredient = db_ingredient)
+        db_ingredients.append(db_ingredient)
+
+    for db_ingredient in db_ingredients:
+        pantry_ingredient = crud.upload_pantry_ingredient(submitted_at = now, user = user, ingredient = db_ingredient)
         ingredient_recipes = crud.find_recipes_by_ingredient_id(db_ingredient.ingredient_id)
-        recipes.setdefault(ingredient, ingredient_recipes)
+        recipes.setdefault(db_ingredient.name, ingredient_recipes)
         
+        for recipe in ingredient_recipes:
+            print("********", db_ingredients)
+            print(" recipe***************** ", recipe.recipe_ingredients)
+            if set(db_ingredients) == set(recipe.recipe_ingredients):
+                all_recipes.append(recipe)
+
         # find_recipes_by_ingredient_id(db_ingredient.ingredient_id) will return a list of recipes for this ingredient otherwise it'll return []
         # take the list from the above step and just extend it to recipes OR
         # recipes.setdefault(ingredient, recipes)
@@ -201,7 +212,7 @@ def upload_pantry_form():
         # setdefault(key, value) is a dict method that takes in a key that you're looking for in your dictionary, and IF that key doesn't exist, 
         # it'll set the key to be the value set as the second argument 
 
-    return render_template("recipesfound.html", recipes = recipes)
+    return render_template("recipesfound.html", recipes = recipes, all_recipes = set(all_recipes))
 
 
 @app.route('/search', methods=["POST"])
