@@ -139,7 +139,22 @@ def show_user(user_id):
     if user == user:
         user = crud.get_user_by_id(user_id)
         ingredients = crud.display_ingredients() 
-        return render_template("userdetail.html", user = user, ingredients = ingredients)    
+        submissions = {}
+
+        #key is the date, value are the ingredients
+      
+        for ingredient in user.pantry_ingredients:
+            
+        
+            submitted_at_date = ingredient.submitted_at.strftime("%Y-%b-%d")
+            if submitted_at_date in submissions:
+                submissions[submitted_at_date].add(ingredient.ingredient.name)
+            else:
+                submissions[submitted_at_date] = set([ingredient.ingredient.name])
+           
+        print("submissions^^^^^^^^^^^^^^^^^^^", submissions)
+
+        return render_template("userdetail.html", user = user, ingredients = ingredients, submissions = submissions)    
     else:
         flash("Please log in to continue!")
         return redirect("/")
@@ -184,7 +199,9 @@ def upload_pantry_form():
     """Uploads the pantry form"""
     user_id = session.get("user_id")
     user = crud.get_user_by_id(user_id)
-    now = datetime.now()
+    now_time = datetime.now()
+    now = now_time.strftime("%Y-%b-%d %H:%M:%S")
+    
 
     pantry_ingredients = request.args.getlist("addpantryingredients")
     all_recipes = []

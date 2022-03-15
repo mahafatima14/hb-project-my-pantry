@@ -100,9 +100,10 @@ def upload_recipe_ingredient(quantity, recipe_id, ingredient_id):
 def display_recipes():
     """Display all the recipes in the database"""
 
-    
     return Recipe.query.all()
 
+
+    
 def get_recipe_by_name(name):
     """Get recipe by name"""
 
@@ -122,6 +123,7 @@ def upload_pantry_ingredient(submitted_at,user,ingredient):
     db.session.commit()
 
     return pantry_ingredients
+
 
 def find_recipes_by_ingredient_id(ingredient_id):
     """Return the recipe given its ingredients"""
@@ -144,8 +146,11 @@ def add_like(user,recipe):
     db.session.commit()
     return likes
 
+def get_pantry_ingredients(user_id, name):
+    """Get pantry ingredient by name and id"""
 
-
+    return PantryIngredient.query.filter_by(user_id = user_id).join(Ingredient).filter_by(name = name).all() 
+    
 
 if __name__ == '__main__':
     from server import app

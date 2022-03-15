@@ -15,16 +15,6 @@
     </ul>
     {% endfor %}
 
-    <h2>All ingredient</h2>
-    <ul>
-        {% if all_recipes %}
-            {% for recipe in all_recipes %}
-                <li><a href= "/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></li>
-            {% endfor %}
-        {% else %}
-            <h4>No recipes found</h4>
-        {% endif %}
-    </ul>
     
 
 

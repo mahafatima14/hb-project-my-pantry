@@ -31,8 +31,8 @@ class PantryIngredient(db.Model):
 
     pantry_ingredient_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     submitted_at = db.Column(db.DateTime)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    ingredient_id = db.Column(db.Integer, db.ForeignKey("ingredients.ingredient_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable = False)
+    ingredient_id = db.Column(db.Integer, db.ForeignKey("ingredients.ingredient_id"), nullable = False)
     
     user = db.relationship("User", backref= "pantry_ingredients")
     ingredient = db.relationship("Ingredient", backref = "pantries")

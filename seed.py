@@ -68,7 +68,7 @@ def load_recipes():
     model.db.session.commit() 
 
     chicken_macaroni_salad = model.Recipe(
-        name ='Cold Chicken Macaroni Salad=',
+        name ='Cold Chicken Macaroni Salad',
         image_url ='',
         instructions = 'Bring a large pot of water to a boil and add chicken; continue to boil until no longer pink in the middle, 15 to 20 minutes. Let sit until cool enough to handle, then dice into small bite-sized pieces. While chicken cooks, bring a second large pot of lightly salted water to a boil. Cook elbow macaroni in the boiling water, stirring occasionally, until tender yet firm to the bite, about 8 minutes. Drain and rinse under cool water.At the same time, place eggs in a saucepan and cover with water. Bring to a boil, remove from heat, and let eggs stand in hot water for 15 minutes.Remove eggs from hot water and hold under cold running water to cool. Peel and dice eggs.Mix mayonnaise, sugar, vinegar, onion salt, salt, mustard, and pepper together in a large bowl. Mix in diced eggs, pasta, and chicken, adding a little more mayonnaise if too dry. Chill for at lest 1 hour, or up to 8 hours or overnight before serving.',
         created_at = '3 day ago',
@@ -180,14 +180,14 @@ def load_ingredients():
     model.db.session.add(peper)
     
     all_purpose_flour = model.Ingredient(
-        name = 'all_purpose_flour',
+        name = 'all purpose flour',
         image = '',
         description = ''
     )
     model.db.session.add(all_purpose_flour)
 
     semi_sweet_chocolate_chips =model.Ingredient(
-        name = 'semi_sweet_chocolate_chips',
+        name = 'semi sweet chocolate chips',
         image = '',
         description = ''
     )
@@ -201,6 +201,39 @@ def load_ingredients():
     model.db.session.add(walnuts)
     model.db.session.commit()
 
+    mayonnaise = model.Ingredient(
+        name = 'Mayonnaise',
+        image = '',
+        description = ''
+    )
+    model.db.session.add(mayonnaise)
+    model.db.session.commit()
+
+    vineger = model.Ingredient(
+        name = 'Distilled white vineger',
+        image = '',
+        description = ''
+    )
+    model.db.session.add(vineger)
+    model.db.session.commit()
+
+    mustard = model.Ingredient(
+        name = 'yellow mustard',
+        image = '',
+        description = ''
+    )
+    model.db.session.add(mustard)
+    model.db.session.commit()
+
+    bell_peppers = model.Ingredient(
+        name = 'Bell Peppers',
+        image = '',
+        description = ''
+    )
+    model.db.session.add(bell_peppers)
+    model.db.session.commit()
+
+   
 load_ingredients()
 
 
@@ -208,29 +241,37 @@ load_ingredients()
 
 def load_recipe_ingredients():
     """Add ingredients to recipes"""
-
+    #~~~~~~~~~~~~~~~Recipe1~~~~~~~~~~~~~~~~~~~~~
     #grab the chickensoup recipe by querying for it from the recipes table and save it in recipe_chickensoup variable
     recipe_chickensoup = model.Recipe.query.filter_by(name = 'Chicken Soup').first()
 
     #grab the chickensoup ingredients by querying for them from the Ingredients table and save them to the recipe_chickensoup_ingredients variable
     recipe_chickensoup_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'chicken bouillon') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper')).all()
     
-
+    #loop over the ingredients and add them to the recipe_ingredients table, under the right name and ingredient
     for ingredient in recipe_chickensoup_ingredients:
         recipe_ingredient = model.RecipeIngredient(recipe = recipe_chickensoup, ingredient = ingredient)
-        #  recipe_chickensoup.recipe_ingredients.append(ingredient)
         model.db.session.add(recipe_ingredient)
 
-    
+    #~~~~~~~~~~~~~~~~Recipe2~~~~~~~~~~~~~~~~~~~~
     
     recipe_chocolatechip = model.Recipe.query.filter_by(name = 'Chocolate Chip cookies').first()
-    recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt')).all()
+    recipe_chocolatechip_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'butter') | (model.Ingredient.name =='vanilla extract') | (model.Ingredient.name == 'eggs') | (model.Ingredient.name == 'brown_sugar') | (model.Ingredient.name == 'semi_sweet_chocolate_chips') | (model.Ingredient.name == 'all_purpose_flour') | (model.Ingredient.name == 'walnuts') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'baking soda')).all()
 
     for ingredient in recipe_chocolatechip_ingredients:
         recipe_ingredient = model.RecipeIngredient(recipe = recipe_chocolatechip, ingredient = ingredient)
         model.db.session.add(recipe_ingredient)
+    #~~~~~~~~~~~~~~Recipe3~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    recipe_chickenmacaronisalad = model.Recipe.query.filter_by(name = 'Cold Chicken Macaroni Salad').first()
+    recipe_chickenmacaronisalad_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'Mayonnaise') | (model.Ingredient.name == 'Distilled white vineger') | (model.Ingredient.name == 'Bell Peppers') | (model.Ingredient.name == 'yellow mustard'))
+    
+    
+    
+    
     
     model.db.session.commit()      
+
 
 
 load_recipe_ingredients()
