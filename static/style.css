@@ -19,19 +19,20 @@ body > .homepage{
 .imageContainer { 
 
   position: absolute;
+  float: right;
   
 }
 .homepage-image {
     
-    position: inherit;
-    width: 1000px;
+    /* display:grid;
+    place-items: left; */
+    width: 900px;
     height: 965px;
     left: 536px;
     top: 59px;
-    padding-left: 50px;
-    padding-top: 50px;
+   
 }
-.log-in-form {
+.log-in-form-modal {
 
   position: absolute;
   width: 230px;
@@ -113,4 +114,22 @@ button#entry-submit {
   button#entry-submit:hover {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   }
-  
+img.rounded.float-left{
+  align-items:center;
+  display: flex;
+  width: 350px;
+  flex-direction: row;
+  padding-left: revert;
+  margin: 25px;
+  border-radius: .50rem !important;
+}
+
+img.rounded.float-right{
+  align-items:center;
+  display: flex;
+  width: 350px;
+  flex-direction: row;
+  padding-left: revert;
+  margin: 25px;
+  border-radius: .50rem !important;
+}

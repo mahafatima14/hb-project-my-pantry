@@ -3,7 +3,7 @@
 {% block title %}{{ user.name }} - Profile Page  {% endblock %}
 
 {% block body %}
-<h1> Welcome {{ user.name }}! Let's Cook!</h1>
+<h1> {{ user.name }}, let's Cook!</h1>
 <div>
   <h2>My recipes:</h2>
   <ul>
@@ -13,7 +13,7 @@
   </ul>
 </div>
 <div>
-  <h2>Recipes you liked:</h2>
+  <h2>Recipes I liked:</h2>
   <ul>
   {% for like in user.likes %}
     <li><a href= "/recipes/{{ like.recipe_id }}">{{ like.recipe.name }}</a></li>
@@ -21,100 +21,53 @@
   </ul>
 </div>
 
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body">Panel Body</div>
-      <div class="panel-footer">Panel Footer</div>
+
+
+
+
+<div class="accordion" id="accordionExample">
+  <h2>Previous Pantry submissions</h2>
+  {% for key, value in submissions.items() %}
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="{{ key }}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ 'collapse'+ key }}" aria-expanded="true" aria-controls="collapseOne">
+        {{ key }}
+      </button>
+    </h2>
+    <div id="{{ 'collapse'+ key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>{{ value }}.</strong> 
+      </div>
     </div>
   </div>
-</div> 
-
-<div>
-  <h2>{{ submissions }} </h2>
+  {% endfor %}
 </div>
 
+</div> 
+
   <div id="fleft">
-    <h2>Add Your Own Recipe to your Profile!</h2>
-
-    <form action="/addrecipe" method="POST">
-    <div class="form-group">
-        <input type="text" class="form-control" name="recipename" placeholder="Example: Chicken Pot Pie"></input>
-      </div>
+    <div class = "d-inline-flex p-2"></div>
+    <div class = "d-flex" id = "addrecipe_picture"></div>  
+    <img src="/static/img/addrecipe.jpg" class="rounded float-left"  >  
+    <br>
+    <br>
+    <button name = "add_recipe" class="btn btn-primary mb-2" id="entry-submit"><a href = "/addarecipe" >Enter a recipe</a></button>
      
-    <div class="form-group">
-        <label for="addingredients"></label>
-        <h4>Select all that apply to your recipe</h4>
-        <select multiple class="form-control" id="addingredients" name ="addingredients" onchange="onIngredientsSelectionChanged(this)">
-            
-            {% for ingredient in ingredients %}
-                <option>{{ ingredient.name }}</option>
-            {% endfor %}
-        </select>
-        <h4>Or enter your own ingredients below:</h4>
-        <label for = "addingredient"> Option 2:</label>
-        <input type="text" class="form-control" name = "addingredient" id="addingredientstext" placeholder="Eggs,milk,yogurt..." oninput="onIngredientsSelectionChangedtext(this)"></input>
         
-        <div>
-          Enter Quantity:
-        </div>
-        <div id="quantitycontainer"></div>
-        </div>
-          <div class="form-group">
-              <label for="add_recipe_instructions"> Cooking Instructions: </label> 
-              <!-- <div grid -->
-              <textarea class="form-group" name ="recipe_instructions" id="add_recipe_instructions" rows="3"></textarea>
-
-          </div>
-          <div class="form-group">
-            <label for="add_recipe_cookingtime"> Cooking time: </label>
-            <input type="text" class="form-control" name="recipe_cookng_time" id="add_recipe_cookingtime" placeholder="In mins">
-          </div>
-          <div class="form-group">
-            <label for="add_recipe_preptime"> Prep time: </label>
-            <input type="text" class="form-control" name ="recipe_prep_time" id="add_recipe_preptime" placeholder="In mins">
-          </div>
-          <!-- <div class="form-group">
-            <label for="recipe_created_at"> Created at:  </label>
-            <input type="text" readonly class="form-control" id="recipe_created_at" placeholder="">
-          </div> -->
-          <div class="form-group">
-            <label for="add_picture">Add an Image</label>
-            <input type="file" name="recipe_image" class="form-control-file" id="add_picture">
-          </div>
-          <br><br>
-          <button type="submit" class="btn btn-primary mb-2" id="entry-submit">Post Recipe</button>
-            
-          
-        </div>
-    </form>
   </div>
+</div>
     
 
   <div id="fright">
-      <h2> What items do you have on hand in your pantry? </h2>
-     
-    <form action="/pantryitems" method="GET">
-      <label for="addpantryingredients">Select ingredients and see which recipes you can cook</label>
-      <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients">
-            
-        {% for ingredient in ingredients %}
-            <option>{{ ingredient.name }}</option>
-        {% endfor %}
-    </select>
-
-    <button type="submit" class="btn btn-primary mb-2" id="entry-submit">I'm feelin lucky</button>
-    
+    <div class = "d-inline-flex p-2"></div>
+    <button type="submit" class="btn btn-primary mb-2" id="entry-submit"><a href = "/lookuppantry" >Look up recipes</a></button>
+    <img src="/static/img/lookuprecipes.jpg" class="rounded float-right"  >
     </form>
   </div>
 </div>
 
-<script type="text/javascript" src="../static/ingredientquantity.js"></script>
+
 
 {% endblock %}
 

@@ -194,6 +194,33 @@ def add_recipe():
 
     return redirect("/recipes")
 
+
+
+
+
+
+@app.route('/addarecipe')
+def button_for_recipe_form():
+    """Button that takes you to fill out the form to add a new recipe"""
+
+    ingredients = crud.display_ingredients() 
+
+    return render_template("recipeform.html", ingredients = ingredients)
+
+
+
+
+@app.route('/lookuppantry')
+def button_for_pantry_form():
+    """Button that takes you to pantry form to look up recipes"""
+
+    ingredients = crud.display_ingredients() 
+
+    return render_template("pantryform.html", ingredients = ingredients)
+
+
+
+
 @app.route("/pantryitems", methods=["GET"])
 def upload_pantry_form():
     """Uploads the pantry form"""
@@ -256,8 +283,6 @@ def like_a_recipe():
     return redirect(f'/recipes/{recipe.recipe_id}')
 
     
-
-
 
 
 

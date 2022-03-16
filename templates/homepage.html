@@ -9,21 +9,47 @@
   <div class="container-fluid">
    
       <div class="imageContainer">
-        <img src="static/img/MyPantry.jpg" class="homepage-image" , width="300px", height='300px'/>
-        <div class="log-in-form">
-          <form action="/login" method="POST">
-            <p>
-              Email <input required type="text" name="email">
-            </p>
+        <div class="d-flex p-2"></div>
+        <img src="static/img/MyPantry.jpg" class="homepage-image"/>
+       
+          </div>
         
-            <p>
-              Password <input required type="password" name="password">
-            </p>
-        
-            <p>
-              <input type="submit" value = "Log In">
-            </p>
-          </form>
+
+<!-- Log in modal -->
+<div class="log-in-form-modal">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Log In
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST">
+            Email 
+            <p><input type="text" name="email"></p>
+            Password 
+            <p><input type="password" name="password"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
       </div>
