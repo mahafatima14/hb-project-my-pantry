@@ -158,7 +158,31 @@ def show_user(user_id):
     else:
         flash("Please log in to continue!")
         return redirect("/")
-    
+
+@app.route('/myprofile')
+def show_my_profile():
+    """shows the recipes I liked, created and my pantry submissions"""
+
+    user_id = session.get("user_id")
+    user = crud.get_user_by_id(user_id)
+    submissions = {}
+
+        #key is the date, value are the ingredients
+      
+    for ingredient in user.pantry_ingredients:
+            
+        submitted_at_date = ingredient.submitted_at.strftime("%Y-%b-%d")
+        if submitted_at_date in submissions:
+            submissions[submitted_at_date].add(ingredient.ingredient.name)
+        else:
+            submissions[submitted_at_date] = set([ingredient.ingredient.name])
+           
+        print("submissions^^^^^^^^^^^^^^^^^^^", submissions)
+
+    return render_template("myprofile.html", user = user, submissions = submissions)    
+   
+
+  
 
 @app.route("/addrecipe", methods=["POST"])
 def add_recipe():
@@ -282,7 +306,7 @@ def like_a_recipe():
 
     return redirect(f'/recipes/{recipe.recipe_id}')
 
-    
+ 
 
 
 

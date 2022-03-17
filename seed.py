@@ -38,7 +38,7 @@ def load_recipes():
     #create recipes and add then to the database:
     chicken_soup = model.Recipe(
         name = 'Chicken Soup',
-        image_url = '',
+        image_url = '/static/img/chickensoup.jpg',
         instructions ='Put the chicken, carrots, celery and onion in a large soup pot and cover with cold water. Heat and simmer, uncovered, until the chicken meat falls off of the bones (skim off foam every so often).Take everything out of the pot. Strain the broth. Pick the meat off of the bones and chop the carrots, celery and onion. Season the broth with salt, pepper and chicken bouillon to taste, if desired. Return the chicken, carrots, celery and onion to the pot, stir together, and serve.',
         created_at = '1 day ago',
         updated_at= '1 day ago',
@@ -55,7 +55,7 @@ def load_recipes():
 
     chocolatechip_cookies = model.Recipe(
         name ='Chocolate Chip cookies',
-        image_url ='',
+        image_url ='/static/img/chocolatechip.jpg',
         instructions = 'Preheat oven to 350 degrees F (175 degrees C). Cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to batter along with salt. Stir in flour, chocolate chips, and nuts. Drop by large spoonfuls onto ungreased pans.Bake for about 10 minutes in the preheated oven, or until edges are nicely browned.',
         created_at = '1 day ago',
         updated_at = '1 day ago',

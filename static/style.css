@@ -5,48 +5,64 @@
 .flash-msg {
     background-color: rgb(242, 240, 248);
     font-family: Arial, ui-rounded, sans-serif;
+    text-align: center;
 }
 
 /* MY HOMEPAGE */
 
-body > .homepage{
+/* .homepage{
 
   font-family: "Source Sans Pro", sans-serif;
+  
+} */
 
-}
 
+.image-container { 
 
-.imageContainer { 
+  background-image: url("img/MyPantry.jpg");
+  background-size: cover;
+  position: relative;
+  height: 700px;
 
-  position: absolute;
-  float: right;
   
 }
-.homepage-image {
-    
-    /* display:grid;
-    place-items: left; */
-    width: 900px;
-    height: 965px;
-    left: 536px;
-    top: 59px;
-   
+
+.text{
+
+    background-color: rgb(22, 21, 21);
+    color: rgb(240, 234, 234);
+    font-size: 2vw; /* Responsive font size */
+    font-weight: bold;
+    margin: 0 auto; /* Center the text container */
+    padding: 10px;
+    width: 50%;
+    text-align: center; /* Center text */
+    position: absolute; /* Position text */
+    top: 50%; /* Position text in the middle */
+    left: 50%; /* Position text in the middle */
+    transform: translate(-50%, -50%); /* Position text in the middle */
+    mix-blend-mode: multiply; /* This makes the cutout text possible */
+    transition: all 0.2s ease-in-out
+
 }
-.log-in-form-modal {
+  text:hover {
+      box-shadow: 0 4px 4px 0 rgba(211, 195, 195, 0.3);
+    } 
+
+/* .log-in-form-modal {
 
   position: absolute;
   width: 230px;
   height: 147px;
   left: 159px;
   top: 258px;
-}
+} */
 
 h1 {
     position:sticky;
     font-family: "Open Sans", sans-serif;
     font-family: bold;
     color: hsl(97, 20%, 63%);
-    background-color: hsl(22, 70%, 36%);
     align-self: center;
     text-align-last: center;
     /* text-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px; */
@@ -83,7 +99,7 @@ nav {
   
   div#fleft {
     display: block !important;
-    background-color: rgb(230, 191, 175) !important;
+    background-color: rgb(223, 215, 213) !important;
     width: 400px !important;
     height: 900px !important;
     float: left !important;
@@ -91,7 +107,7 @@ nav {
 }
 div#fright {
     display: block !important;
-    background-color: rgb(230, 191, 175) !important;
+    background-color: rgb(223, 215, 213) !important;
     width: 400px !important;
     height: 900px !important;
     float: left  !important;
@@ -114,6 +130,20 @@ button#entry-submit {
   button#entry-submit:hover {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   }
+
+button#entry-submit-form {
+    background-color: #31323d;
+    width: 25%;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+  }
+  button#entry-submit-form:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  }
 img.rounded.float-left{
   align-items:center;
   display: flex;
@@ -133,3 +163,19 @@ img.rounded.float-right{
   margin: 25px;
   border-radius: .50rem !important;
 }
+select#addpantryingredients.form-control{
+  width: 100%;
+  text-align: center;
+  left: 20%;
+  border-radius: .50rem
+}
+img.card-img-top{
+  width: 30%;
+  border-top-left-radius: calc(.50rem - 1px);
+  border-top-right-radius: calc(.50rem - 1px);
+  align-items: center;
+  transition: all 0.2s ease-in-out
+}
+  img.card-img-top:hover{
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+  }

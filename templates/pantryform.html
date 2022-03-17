@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<div id="fright">
-    <h2> What items do you have on hand in your pantry? </h2>
-   
-  <form action="/pantryitems" method="GET">
-    <label for="addpantryingredients">Select ingredients and see which recipes you can cook</label>
-    <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients">
-          
-      {% for ingredient in ingredients %}
-          <option>{{ ingredient.name }}</option>
-      {% endfor %}
-  </select>
 
-  <button type="submit" class="btn btn-primary mb-2" id="entry-submit">I'm feelin lucky</button>
-  
-  </form>
-</div>
+
+    <div class="card text-center">
+        <div class="card-header">
+            Lets look through you pantry
+        </div>
+        <div class="card-body">
+            <form action="/pantryitems" method="GET">
+                <label for="addpantryingredients">Select ingredients and see which recipes you can cook</label>
+                <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients">
+                      
+                  {% for ingredient in ingredients %}
+                      <option>{{ ingredient.name }}</option>
+                  {% endfor %}
+              </select>
+          <h5 class="card-title">Get all the recipes you can cook with each of your ingredients</h5>
+          
+          <button type="submit" class="btn btn-primary mb-2" id="entry-submit-form">Search</button>
+        </div>
+        <!-- <div class="card-footer text-muted">
+          last search: 2 days ago
+        </div> -->
+      </div>
+    
+   
+
+
 
 {% endblock %}

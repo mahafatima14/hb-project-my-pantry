@@ -1,61 +1,72 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<div id="fleft">
-    <h2>Add Your Own Recipe to your Profile!</h2>
 
-    <form action="/addrecipe" method="POST">
-    <div class="form-group">
-        <input type="text" class="form-control" name="recipename" placeholder="Example: Chicken Pot Pie"></input>
+    
+    <div class="card text-center">
+        <div class="card-header">
+            Add your own recipe
+        </div>
+        <div class="card-body">
+            <form action="/addrecipe" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="recipename" placeholder="Example: Chicken Pot Pie"></input>
+                  </div>
+                 
+                <div class="form-group">
+                    <label for="addingredients"></label>
+                    <h4>Select all that apply to your recipe</h4>
+                    <select multiple class="form-control" id="addingredients" name ="addingredients" onchange="onIngredientsSelectionChanged(this)">
+                        
+                        {% for ingredient in ingredients %}
+                            <option>{{ ingredient.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <h4>Or enter your own ingredients below:</h4>
+                    <label for = "addingredient"> Option 2:</label>
+                    <input type="text" class="form-control" name = "addingredient" id="addingredientstext" placeholder="Eggs,milk,yogurt..." oninput="onIngredientsSelectionChangedtext(this)"></input>
+                    
+                    <div>
+                      Enter Quantity:
+                    </div>
+                    <div id="quantitycontainer"></div>
+                    </div>
+                      <div class="form-group">
+                          <label for="add_recipe_instructions"> Cooking Instructions: </label> 
+                          <!-- <div grid -->
+                          <textarea class="form-group" name ="recipe_instructions" id="add_recipe_instructions" rows="3"></textarea>
+            
+                      </div>
+                      <div class="form-group">
+                        <label for="add_recipe_cookingtime"> Cooking time: </label>
+                        <input type="text" class="form-control" name="recipe_cookng_time" id="add_recipe_cookingtime" placeholder="In mins">
+                      </div>
+                      <div class="form-group">
+                        <label for="add_recipe_preptime"> Prep time: </label>
+                        <input type="text" class="form-control" name ="recipe_prep_time" id="add_recipe_preptime" placeholder="In mins">
+                      </div>
+                      <!-- <div class="form-group">
+                        <label for="recipe_created_at"> Created at:  </label>
+                        <input type="text" readonly class="form-control" id="recipe_created_at" placeholder="">
+                      </div> -->
+                      <div class="form-group">
+                        <label for="add_picture">Add an Image</label>
+                        <input type="file" name="recipe_image" class="form-control-file" id="add_picture">
+                      </div>
+                      <br><br>
+                      <button type="submit" class="btn btn-primary mb-2" id="entry-submit-form">Post Recipe</button>
+                        
+                      
+                    </div>
+                </form>
+        <!-- <div class="card-footer text-muted">
+          last search: 2 days ago
+        </div> -->
       </div>
-     
-    <div class="form-group">
-        <label for="addingredients"></label>
-        <h4>Select all that apply to your recipe</h4>
-        <select multiple class="form-control" id="addingredients" name ="addingredients" onchange="onIngredientsSelectionChanged(this)">
-            
-            {% for ingredient in ingredients %}
-                <option>{{ ingredient.name }}</option>
-            {% endfor %}
-        </select>
-        <h4>Or enter your own ingredients below:</h4>
-        <label for = "addingredient"> Option 2:</label>
-        <input type="text" class="form-control" name = "addingredient" id="addingredientstext" placeholder="Eggs,milk,yogurt..." oninput="onIngredientsSelectionChangedtext(this)"></input>
-        
-        <div>
-          Enter Quantity:
-        </div>
-        <div id="quantitycontainer"></div>
-        </div>
-          <div class="form-group">
-              <label for="add_recipe_instructions"> Cooking Instructions: </label> 
-              <!-- <div grid -->
-              <textarea class="form-group" name ="recipe_instructions" id="add_recipe_instructions" rows="3"></textarea>
 
-          </div>
-          <div class="form-group">
-            <label for="add_recipe_cookingtime"> Cooking time: </label>
-            <input type="text" class="form-control" name="recipe_cookng_time" id="add_recipe_cookingtime" placeholder="In mins">
-          </div>
-          <div class="form-group">
-            <label for="add_recipe_preptime"> Prep time: </label>
-            <input type="text" class="form-control" name ="recipe_prep_time" id="add_recipe_preptime" placeholder="In mins">
-          </div>
-          <!-- <div class="form-group">
-            <label for="recipe_created_at"> Created at:  </label>
-            <input type="text" readonly class="form-control" id="recipe_created_at" placeholder="">
-          </div> -->
-          <div class="form-group">
-            <label for="add_picture">Add an Image</label>
-            <input type="file" name="recipe_image" class="form-control-file" id="add_picture">
-          </div>
-          <br><br>
-          <button type="submit" class="btn btn-primary mb-2" id="entry-submit">Post Recipe</button>
-            
-          
-        </div>
-    </form>
-  </div>
+
+    
+
 
   <script type="text/javascript" src="../static/ingredientquantity.js"></script>
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ user.name }} - Profile Page  {% endblock %}
+{% block title %}{{ user.name }}' pantry  {% endblock %}
 
 {% block body %}
-<h1> {{ user.name }}, let's Cook!</h1>
-<div>
+<h3>Hello {{user.name}}, lets get cooking</h3> 
+<!-- <div>
   <h2>My recipes:</h2>
   <ul>
   {% for recipe in user.recipes %}
@@ -42,7 +42,7 @@
     </div>
   </div>
   {% endfor %}
-</div>
+</div> -->
 
 </div> 
 
@@ -51,7 +51,7 @@
     <div class = "d-flex" id = "addrecipe_picture"></div>  
     <img src="/static/img/addrecipe.jpg" class="rounded float-left"  >  
     <br>
-    <br>
+
     <button name = "add_recipe" class="btn btn-primary mb-2" id="entry-submit"><a href = "/addarecipe" >Enter a recipe</a></button>
      
         
@@ -61,13 +61,29 @@
 
   <div id="fright">
     <div class = "d-inline-flex p-2"></div>
-    <button type="submit" class="btn btn-primary mb-2" id="entry-submit"><a href = "/lookuppantry" >Look up recipes</a></button>
     <img src="/static/img/lookuprecipes.jpg" class="rounded float-right"  >
+    <br>
+
+    <button type="submit" class="btn btn-primary mb-2" id="entry-submit"><a href = "/lookuppantry" >Look up recipes</a></button>
+    
     </form>
   </div>
 </div>
 
+<div id="fright">
+  <div class = "d-inline-flex p-2"></div>
+  <img src="/static/img/MyPantry.jpg" class="rounded float-right"  >
+  <br>
 
+  <button type="submit" class="btn btn-primary mb-2" id="entry-submit"><a href = "/myprofile" > View my pantry</a></button>
+  
+  </form>
+</div>
+
+</div>
+
+</div>
+</div>
 
 {% endblock %}
 

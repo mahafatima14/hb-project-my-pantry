@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}' pantry  {% endblock %}
+
+{% block body %}
+
+<div id="fright">
+    <div class = "d-inline-flex p-2"></div>
+    <div>
+      <h2>My recipes:</h2>
+      <ul>
+      {% for recipe in user.recipes %}
+        <li><a href= "/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Recipes I liked:</h2>
+      <ul>
+      {% for like in user.likes %}
+        <li><a href= "/recipes/{{ like.recipe_id }}">{{ like.recipe.name }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+    <div class="accordion" id="accordionExample">
+      <h2>Previous Pantry submissions</h2>
+      {% for key, value in submissions.items() %}
+    
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="{{ key }}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ 'collapse'+ key }}" aria-expanded="true" aria-controls="collapseOne">
+            {{ key }}
+          </button>
+        </h2>
+        <div id="{{ 'collapse'+ key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>{{ value }}.</strong> 
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+{% endblock %}
