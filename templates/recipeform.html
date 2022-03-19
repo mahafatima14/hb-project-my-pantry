@@ -4,36 +4,44 @@
 
     
     <div class="card text-center">
-        <div class="card-header">
-            Add your own recipe
+      <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">Share a recipe </h1>         
         </div>
         <div class="card-body">
             <form action="/addrecipe" method="POST">
                 <div class="form-group">
+                   
                     <input type="text" class="form-control" name="recipename" placeholder="Example: Chicken Pot Pie"></input>
                   </div>
-                 
+                  <div style="text-align:justify">
+                    Ingredients
+                  </div>
                 <div class="form-group">
                     <label for="addingredients"></label>
-                    <h4>Select all that apply to your recipe</h4>
+                    <label>Option 1: Select from our pantry ingredients</label>
                     <select multiple class="form-control" id="addingredients" name ="addingredients" onchange="onIngredientsSelectionChanged(this)">
                         
                         {% for ingredient in ingredients %}
                             <option>{{ ingredient.name }}</option>
                         {% endfor %}
                     </select>
-                    <h4>Or enter your own ingredients below:</h4>
-                    <label for = "addingredient"> Option 2:</label>
+                   
+                    <label for = "addingredient"> Option 2: enter your own ingredients below:</label>
                     <input type="text" class="form-control" name = "addingredient" id="addingredientstext" placeholder="Eggs,milk,yogurt..." oninput="onIngredientsSelectionChangedtext(this)"></input>
                     
                     <div>
                       Enter Quantity:
                     </div>
-                    <div id="quantitycontainer"></div>
+                    
+                    <div id="quantitycontainer">   </div>
+                    <br>
+                    </div>
+                    <div style="text-align: left;">
+                      Cooking Instructions:
                     </div>
                       <div class="form-group">
-                          <label for="add_recipe_instructions"> Cooking Instructions: </label> 
-                          <!-- <div grid -->
+                          
+                         
                           <textarea class="form-group" name ="recipe_instructions" id="add_recipe_instructions" rows="3"></textarea>
             
                       </div>

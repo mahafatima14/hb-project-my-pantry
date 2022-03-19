@@ -19,7 +19,7 @@
 
 .image-container { 
 
-  background-image: url("img/MyPantry.jpg");
+  background-image: url("img/homepage..jpg");
   background-size: cover;
   position: relative;
   height: 700px;
@@ -38,7 +38,7 @@
     width: 50%;
     text-align: center; /* Center text */
     position: absolute; /* Position text */
-    top: 50%; /* Position text in the middle */
+    top: 55%; /* Position text in the middle */
     left: 50%; /* Position text in the middle */
     transform: translate(-50%, -50%); /* Position text in the middle */
     mix-blend-mode: multiply; /* This makes the cutout text possible */
@@ -49,23 +49,29 @@
       box-shadow: 0 4px 4px 0 rgba(211, 195, 195, 0.3);
     } 
 
-/* .log-in-form-modal {
 
-  position: absolute;
-  width: 230px;
-  height: 147px;
-  left: 159px;
-  top: 258px;
-} */
+
+body{
+  background-image: url("img/secondary.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 
 h1 {
     position:sticky;
     font-family: "Open Sans", sans-serif;
     font-family: bold;
-    color: hsl(97, 20%, 63%);
+    color: hsl(99, 12%, 36%);
     align-self: center;
     text-align-last: center;
     /* text-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px; */
+}
+h1.display-4{
+  font-size: calc(0.275rem + 2.8vw);
+  font-weight: 100;
+ line-height: 1.5;
+  border-block: #0b124b;
 }
 
 h2 {
@@ -93,32 +99,32 @@ nav {
   
   a:hover,
   a:focus {
-    background-color: #fff;
-    color: #333;
+    background-color: rgb(138, 135, 135);
+    color: rgb(33, 197, 115);
   }
   
   div#fleft {
     display: block !important;
-    background-color: rgb(223, 215, 213) !important;
-    width: 400px !important;
-    height: 900px !important;
+    /* background-color: rgb(116, 187, 125) !important; */
+    width: 300px !important;
+    height: 800px !important;
     float: left !important;
-    margin-left: 100px !important;
+    margin-left: 70px !important;
 }
 div#fright {
     display: block !important;
-    background-color: rgb(223, 215, 213) !important;
-    width: 400px !important;
-    height: 900px !important;
+    /* background-color: rgb(116, 187, 125) !important; */
+    width: 300px !important;
+    height: 600px !important;
     float: left  !important;
-    margin-left: 100px !important;
+    margin-left: 70px !important;
 }
 .title {
     width: 600%;
   }
   
 button#entry-submit {
-    background-color: #dd8156;
+    background-color: hsl(97, 20%, 63%);
     width: 100%;
     padding: 10px;
     border-radius: 50px;
@@ -132,7 +138,7 @@ button#entry-submit {
   }
 
 button#entry-submit-form {
-    background-color: #31323d;
+    background-color: hsl(97, 20%, 63%);
     width: 25%;
     padding: 10px;
     border-radius: 50px;
@@ -147,28 +153,23 @@ button#entry-submit-form {
 img.rounded.float-left{
   align-items:center;
   display: flex;
-  width: 350px;
+  width: 100%;
   flex-direction: row;
-  padding-left: revert;
-  margin: 25px;
+  /* padding-left: revert; */
+  /* margin: 25px; */
   border-radius: .50rem !important;
 }
 
 img.rounded.float-right{
   align-items:center;
   display: flex;
-  width: 350px;
+  width: 100%;
   flex-direction: row;
-  padding-left: revert;
-  margin: 25px;
+  /* padding-left: revert; */
+  /* margin: 25px; */
   border-radius: .50rem !important;
 }
-select#addpantryingredients.form-control{
-  width: 100%;
-  text-align: center;
-  left: 20%;
-  border-radius: .50rem
-}
+
 img.card-img-top{
   width: 30%;
   border-top-left-radius: calc(.50rem - 1px);
@@ -179,3 +180,83 @@ img.card-img-top{
   img.card-img-top:hover{
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
   }
+
+/* enter recipe form css  */
+
+select#addpantryingredients.form-control{
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+  width: 50%;
+  
+}
+
+div.card-body{
+  margin: 1.5px;
+  width: 100%;
+  align-self: left;
+  background-image: url("img/secondary.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Source Sans Pro", sans-serif
+}
+div.form-group{
+  text-align-last: left;
+
+
+}
+textarea#add_recipe_instructions.form-group {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  left: 10%;
+  background-color: #e1e1e1;
+  resize: none;
+  
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+  width: 50%;
+}
+input.form-control{
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+  width: 50%;
+
+}
+.form-control{
+  background-color: #e1e1e1;
+  width: 50%;
+
+}
+
+/* recipedetails page css */
+
+.mainrecipe{
+  display: grid;
+  gap: 5 rem;
+}
+.recipe-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr); 
+  gap: 2rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+.recipe-icons i {
+  font-size: 1.5rem;
+  color: var(--primary-500);
+}
+.recipe-icons h5,
+.recipe-icons p {
+  margin-bottom: 0;
+  font-size: 0.85em;
+}
+
+.recipe-icons p {
+  color: var(--grey-600);
+}
+

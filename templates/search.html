@@ -4,19 +4,19 @@
 
 
 
-<div class="container-fluid">
+
+    
+    
+<div class="jumbotron">
     {% if results %}
-        
-        <a href="/recipes/{{ results.recipe_id }}">{{ results.name }}</a> 
-       
+    <h2 class="display-4">Matching Recipe Found</h2>
+    <p class="lead"><a href="/recipes/{{ results.recipe_id }}">{{ results.name }}</a> </p>
+    <hr class="my-4">
     {% else %}
-        Sorry, no recipes found. 
-        <a href= "/addarecipe">Would you like to add a recipe?</a>
-
-{% endif %}
-    
-    
-
+    <h1 class="display-4">Sorry, no matching recipe found</h1>
+    <p class="lead"><a href="/addarecipe">Would you like to a recipe?</a> </p>
+    {% endif %}
+  </div>
     
 
 {% endblock body %}

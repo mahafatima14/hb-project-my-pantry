@@ -3,7 +3,7 @@
 {% block title %}{{ user.name }}' pantry  {% endblock %}
 
 {% block body %}
-<h3>Hello {{user.name}}, lets get cooking</h3> 
+
 <!-- <div>
   <h2>My recipes:</h2>
   <ul>
@@ -60,7 +60,7 @@
     
 
   <div id="fright">
-    <div class = "d-inline-flex p-2"></div>
+    <div class = "d-inline-flex p-2" id = "lookuprecipes"></div>
     <img src="/static/img/lookuprecipes.jpg" class="rounded float-right"  >
     <br>
 
@@ -71,7 +71,7 @@
 </div>
 
 <div id="fright">
-  <div class = "d-inline-flex p-2"></div>
+  <div class = "d-inline-flex p-2" id = "viewmypantry"></div>
   <img src="/static/img/MyPantry.jpg" class="rounded float-right"  >
   <br>
 

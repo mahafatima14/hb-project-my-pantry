@@ -4,19 +4,25 @@
 
 
     <div class="card text-center">
-        <div class="card-header">
-            Lets look through you pantry
+      <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">Select ingredients, find recipes</h1>         
         </div>
         <div class="card-body">
             <form action="/pantryitems" method="GET">
-                <label for="addpantryingredients">Select ingredients and see which recipes you can cook</label>
-                <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients">
+                <label for="addpantryingredients"></label>
+                <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients" style="align-self: center;">
                       
                   {% for ingredient in ingredients %}
                       <option>{{ ingredient.name }}</option>
                   {% endfor %}
               </select>
-          <h5 class="card-title">Get all the recipes you can cook with each of your ingredients</h5>
+              <br>
+              <br>
+          <div
+           style="text-align: left;">Get all the recipes you can cook with each of your ingredients
+          <br>
+          <br>
+            </div>
           
           <button type="submit" class="btn btn-primary mb-2" id="entry-submit-form">Search</button>
         </div>

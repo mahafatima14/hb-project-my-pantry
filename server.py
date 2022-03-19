@@ -60,7 +60,7 @@ def process_login():
         session["user_name"] = user.name
         session["user_id"] = user.user_id
 
-        flash(f"Welcome back, {user.name}!")
+        flash(f"Welcome back, {user.name}! Lets get cooking!")
 
         
         return redirect(f"/users/{user.user_id}")  

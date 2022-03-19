@@ -1,8 +1,61 @@
 {% extends 'base.html' %} {% block title %}List Recipes{% endblock %} {% block body %}
 
-<div class="container-fluid">
-    <h1> {{ recipe.name }} </h1>
-    <h2> {{ recipe.recipe_id }}</h2>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <div class = "col-12" >
+                <h1 class="display-4">{{ recipe.name }}</h1>         
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix">
+    <div class = "mainrecipe">
+    <img src="{{ recipe.image_url }}" class="recipe-img" style="height: 300px;"  alt="recipe_image">
+    </div>
+</div>
+<div class="recipe-icons">
+    <article>
+          <i class="fas fa-clock"></i>
+          <h5>prep time</h5>
+          <p>{{ recipe.prep_time}}</p>
+    </article>
+    <article>
+          <i class="far fa-clock"></i>
+          <h5>cook time</h5>
+          <p>{{ recipe.cooking_time }}</p>
+    </article>
+    <article>
+        <i class="fa fa-heart"></i>
+        <h5>Likes</h5>
+        <p>{{ recipe.likes|length }}</p>
+  </article>
+    
+    <p>{{ recipe.instructions }}</p>
+     
+      
+      <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div>
+        <h1 style="text-align: left"></h1>         
+        </div>
+    
     
     <ul>
         <li>
