@@ -70,14 +70,21 @@ h1 {
 h1.display-4{
   font-size: calc(0.275rem + 2.8vw);
   font-weight: 100;
- line-height: 1.5;
-  border-block: #0b124b;
+  line-height: 1.5;
+  margin-left: 10%;
+  
 }
 
 h2 {
     color: rgb(128, 68, 0);
     font-weight: initial;
     font-family: "Open Sans", sans-serif;
+}
+h4 {
+   
+  color:rgb(12, 61, 45);
+  margin: 1.5rem;
+  
 }
 
  
@@ -234,10 +241,14 @@ input.form-control{
 }
 
 /* recipedetails page css */
+body.recipedetail{
+  background-color: #f0ecec;
+  background-image: none;
+}
 
-.mainrecipe{
+div.mainrecipe{
   display: grid;
-  gap: 5 rem;
+  gap: 5rem;
 }
 .recipe-icons {
   display: grid;
@@ -259,4 +270,23 @@ input.form-control{
 .recipe-icons p {
   color: var(--grey-600);
 }
+.recipe-img{
+  height: 400px;
+  align-self: center;
+  margin: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+}
 
+.form-check{
+  display: grid;
+  align-self: right;
+  right: 70%;
+}
+button#like-button{
+  display: grip;
+  position:absolute;
+  
+  right: 20%;
+  top: 35%;
+}

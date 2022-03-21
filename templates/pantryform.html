@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
-{% block body %}
+{% extends 'base.html' %} {% block title %}Find Recipes{% endblock %} {% block body %}
+
 
 
 
     <div class="card text-center">
-      <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">Select ingredients, find recipes</h1>         
-        </div>
+      
         <div class="card-body">
+          <div class="jumbotron jumbotron-fluid">
+            <h1 class="display-4">Select ingredients, find recipes</h1>         
+           
             <form action="/pantryitems" method="GET">
                 <label for="addpantryingredients"></label>
                 <select multiple class="form-control" id="addpantryingredients" name ="addpantryingredients" style="align-self: center;">
@@ -17,7 +18,7 @@
                   {% endfor %}
               </select>
               <br>
-              <br>
+            </div>      <br>
           <div
            style="text-align: left;">Get all the recipes you can cook with each of your ingredients
           <br>

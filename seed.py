@@ -19,11 +19,11 @@ model.db.create_all()
 def load_users():
     """Users"""
     #seed the first user in the database and add to the session:
-    first_user = model.User(name = "first_user", email = "test@test.test", password = "test")
+    first_user = model.User(name = "Ron Weasley", email = "test@test.test", password = "test")
     model.db.session.add(first_user)
 
     #seed the second user to the database and add to the session:
-    second_user= model.User(name = "second_user", email = "test1@test.test", password = "test")
+    second_user= model.User(name = "Harry Potter", email = "test1@test.test", password = "test")
     model.db.session.add(second_user)
 
     #commit users to the database
@@ -38,7 +38,7 @@ def load_recipes():
     #create recipes and add then to the database:
     chicken_soup = model.Recipe(
         name = 'Chicken Soup',
-        image_url = '/static/img/chickensoup.jpg',
+        image_url = '/static/img/chicken_soup.jpg',
         instructions ='Put the chicken, carrots, celery and onion in a large soup pot and cover with cold water. Heat and simmer, uncovered, until the chicken meat falls off of the bones (skim off foam every so often).Take everything out of the pot. Strain the broth. Pick the meat off of the bones and chop the carrots, celery and onion. Season the broth with salt, pepper and chicken bouillon to taste, if desired. Return the chicken, carrots, celery and onion to the pot, stir together, and serve.',
         created_at = '1 day ago',
         updated_at= '1 day ago',
@@ -69,7 +69,7 @@ def load_recipes():
 
     chicken_macaroni_salad = model.Recipe(
         name ='Cold Chicken Macaroni Salad',
-        image_url ='',
+        image_url ='/static/img/macaroni_salad.jpg',
         instructions = 'Bring a large pot of water to a boil and add chicken; continue to boil until no longer pink in the middle, 15 to 20 minutes. Let sit until cool enough to handle, then dice into small bite-sized pieces. While chicken cooks, bring a second large pot of lightly salted water to a boil. Cook elbow macaroni in the boiling water, stirring occasionally, until tender yet firm to the bite, about 8 minutes. Drain and rinse under cool water.At the same time, place eggs in a saucepan and cover with water. Bring to a boil, remove from heat, and let eggs stand in hot water for 15 minutes.Remove eggs from hot water and hold under cold running water to cool. Peel and dice eggs.Mix mayonnaise, sugar, vinegar, onion salt, salt, mustard, and pepper together in a large bowl. Mix in diced eggs, pasta, and chicken, adding a little more mayonnaise if too dry. Chill for at lest 1 hour, or up to 8 hours or overnight before serving.',
         created_at = '3 day ago',
         updated_at = '3 day ago',
@@ -79,6 +79,34 @@ def load_recipes():
       
     )
     model.db.session.add(chicken_macaroni_salad)
+    model.db.session.commit() 
+
+    greek_salad = model.Recipe(
+        name ='Greek Salad',
+        image_url ='/static/img/salad.jpg',
+        instructions = 'Bring a large pot of water to a boil and add chicken; continue to boil until no longer pink in the middle, 15 to 20 minutes. Let sit until cool enough to handle, then dice into small bite-sized pieces. While chicken cooks, bring a second large pot of lightly salted water to a boil. Cook elbow macaroni in the boiling water, stirring occasionally, until tender yet firm to the bite, about 8 minutes. Drain and rinse under cool water.At the same time, place eggs in a saucepan and cover with water. Bring to a boil, remove from heat, and let eggs stand in hot water for 15 minutes.Remove eggs from hot water and hold under cold running water to cool. Peel and dice eggs.Mix mayonnaise, sugar, vinegar, onion salt, salt, mustard, and pepper together in a large bowl. Mix in diced eggs, pasta, and chicken, adding a little more mayonnaise if too dry. Chill for at lest 1 hour, or up to 8 hours or overnight before serving.',
+        created_at = '3 day ago',
+        updated_at = '3 day ago',
+        prep_time = '15 mins',
+        cooking_time = '20 mins',
+        user_id = 2
+      
+    )
+    model.db.session.add(greek_salad)
+    model.db.session.commit() 
+
+    easy_beef = model.Recipe(
+        name ='Easy Ginger Beef',
+        image_url ='/static/img/beef_stew.jpg',
+        instructions = 'Bring a large pot of water to a boil and add chicken; continue to boil until no longer pink in the middle, 15 to 20 minutes. Let sit until cool enough to handle, then dice into small bite-sized pieces. While chicken cooks, bring a second large pot of lightly salted water to a boil. Cook elbow macaroni in the boiling water, stirring occasionally, until tender yet firm to the bite, about 8 minutes. Drain and rinse under cool water.At the same time, place eggs in a saucepan and cover with water. Bring to a boil, remove from heat, and let eggs stand in hot water for 15 minutes.Remove eggs from hot water and hold under cold running water to cool. Peel and dice eggs.Mix mayonnaise, sugar, vinegar, onion salt, salt, mustard, and pepper together in a large bowl. Mix in diced eggs, pasta, and chicken, adding a little more mayonnaise if too dry. Chill for at lest 1 hour, or up to 8 hours or overnight before serving.',
+        created_at = '3 day ago',
+        updated_at = '3 day ago',
+        prep_time = '15 mins',
+        cooking_time = '20 mins',
+        user_id = 2
+      
+    )
+    model.db.session.add(easy_beef)
     model.db.session.commit() 
 
 load_recipes()
@@ -266,7 +294,9 @@ def load_recipe_ingredients():
     recipe_chickenmacaronisalad = model.Recipe.query.filter_by(name = 'Cold Chicken Macaroni Salad').first()
     recipe_chickenmacaronisalad_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'Mayonnaise') | (model.Ingredient.name == 'Distilled white vineger') | (model.Ingredient.name == 'Bell Peppers') | (model.Ingredient.name == 'yellow mustard'))
     
-    
+    for ingredient in recipe_chickenmacaronisalad_ingredients:
+        recipe_ingredient = model.RecipeIngredient(recipe = recipe_chickenmacaronisalad, ingredient = ingredient)
+        model.db.session.add(recipe_ingredient)
     
     
     

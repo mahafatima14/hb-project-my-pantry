@@ -1,24 +1,43 @@
 {% extends 'base.html' %} {% block title %}List Recipes{% endblock %} {% block body %}
-
+<body class ="recipedetail"></body>
 <div class="container">
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class = "col-12" >
-                <h1 class="display-4">{{ recipe.name }}</h1>         
+                <h1 class="display-4">{{ recipe.name }}</h1>
+                         
             </div>
         </div>
     </div>
 </div>
-<div class="clearfix">
-    <div class = "mainrecipe">
+
+<div class = "mainrecipe">
+    <div class = "recipe-content">
+   <!-- Like button     -->
+<div class="form-check">
+    <form action = "/like" method="POST">
+        
+        {% if liked %}
+        <button type="button" class="btn btn-primary mb-2" id = "like-button" disabled>Liked </button> 
+        
+
+        {% else %}
+        <button type="submit" class="btn btn-primary mb-2" id = "like-button" >Like this recipe?</button> 
+       
+        
+        {% endif %}  
+        <input type="hidden" id="recipeId" name="recipe_id" value={{ recipe.recipe_id }}></input>
+</form>
+</div>
+     
     <img src="{{ recipe.image_url }}" class="recipe-img" style="height: 300px;"  alt="recipe_image">
-    </div>
+    <h4>Recipe by: {{ recipe.user.name}}</h4>
 </div>
 <div class="recipe-icons">
     <article>
           <i class="fas fa-clock"></i>
           <h5>prep time</h5>
-          <p>{{ recipe.prep_time}}</p>
+          <p>{{ recipe.prep_time }}</p>
     </article>
     <article>
           <i class="far fa-clock"></i>
@@ -30,69 +49,31 @@
         <h5>Likes</h5>
         <p>{{ recipe.likes|length }}</p>
   </article>
-    
-    <p>{{ recipe.instructions }}</p>
-     
-      
-      <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
-    </div>
   </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-    <div>
-        <h1 style="text-align: left"></h1>         
-        </div>
-    
-    
-    <ul>
-        <li>
-                
-              {{ recipe.instructions }}
-              <br>
-              {{ recipe.user.name }}
-              <br>
-              {% for ingredient in recipe.recipe_ingredients %}
-              <li>{{ ingredient.ingredient.name }}</li>
+<div class = "recipe-content">
+    <h4>Instructions</h4>
+    <ul><p>{{ recipe.instructions }}</p></ul>
+    <h4>Ingredients</h4>
+    {% for ingredient in recipe.recipe_ingredients %}
+            <ul>  <li>{{ ingredient.ingredient.name }}</li> </ul>
               {% endfor %}
-        </li>
-    </ul>
-</div>
- <!-- Like button     -->
-<div class="form-check">
-    <form action = "/like" method="POST">
-        
-        {% if liked %}
-        <button type="button" class="btn btn-primary mb-2" disabled>Liked </button> 
-        
+     
+      
+    
 
-        {% else %}
-        <button type="submit" class="btn btn-primary mb-2" >Like this recipe?</button> 
-       
-        
-        {% endif %}  
-       
+</body>
 
-       
-        
-        <input type="hidden" id="recipeId" name="recipe_id" value={{ recipe.recipe_id }}></input>
-    </form>
-<p><strong> This recipe has been liked {{ recipe.likes|length }} times </strong></p>
+
+
+
+
+
+
+
+
 
       
 {% endblock body %}
 
-
-<script> </script>
