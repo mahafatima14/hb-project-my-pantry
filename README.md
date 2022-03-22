@@ -1,6 +1,6 @@
 # MyPantry
 
-MyPanyry is a full stack web application that connects people through food. It sims to reduce food waste by curating recipes based on the ingredients you have on hand. It also allows to posts recipes to their profiles and like + save recipes fellow users have posted.
+MyPantry is a full stack web application that connects people through food. It sims to reduce food waste by curating recipes based on the ingredients you have on hand. It also allows to posts recipes to their profiles and like + save recipes fellow users have posted.
 
 <img src="static/img/Capture-1.JPG">
 ## Navigation
@@ -8,16 +8,20 @@ MyPanyry is a full stack web application that connects people through food. It s
 - [How It Works](#how-it-works)
 - [Tech Stack](#tech-stack)
 - [Setup and Installation](#setup)
+- [Acknowledgments](#acknowledgment)
+- [About the Developer](#about-developer)
 
 ## <a name="how-it-works"></a>How It Works
 
 After the user is authenticated, they are taken to the landing page where they have three options:
+
+<img src="static/img/Capture-2.JPG">
  
 <details><summary>Option 1: Enter a Recipe</summary>
 <p>
 
 #### This lets the user enter recipes they would like to be saved on their profile. JavaScripts event handlers are used to add quantities in the text boxes that show up after an ingredient is entered.
-
+<img src="static/img/Capture-1.JPG">
 </p>
 </details>
 
@@ -39,7 +43,7 @@ After the user is authenticated, they are taken to the landing page where they h
 
 ## <a name="tech-stack"></a>Tech Stack
 
-<strong>Back-End:</strong> Python, Flask, Jinja, SQLAlchemy, PostgreSQL
+<strong>Back-End:</strong> Python, Flask, Jinja, SQLAlchemy, PostgreSQL<br>
 <strong>Front-End:</strong> HTML/ CSS, Bootstrap, jQuery, JavaScript <br>
 
 
@@ -104,12 +108,17 @@ Open your browser and navigate to:
 http://localhost:5000/
 ```
 
-## Future Features
+### Future Features
 
 - Add recipe restriction filter elements (ex: Kosher, Vegan, Halal) using React 
 - Add the option for the recipes to be send to the user using Twilio API
 - Add grocery list feature if there are few ingredients missing from the pantry
 
-## Acknowledgments
+## <a name="acknowledgment"></a>Acknowledgments
 
 Images by Brooke Lark from unsplash.com
+
+## <a name="about-developer"></a>About the Developer
+
+<i class="fa fa-github"></i>
+
