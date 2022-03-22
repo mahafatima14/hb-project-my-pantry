@@ -2,20 +2,23 @@
 <body class ="recipedetail"></body>
 <div class="container">
     <div class="row">
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron ">
             <div class = "col-12" >
                 <h1 class="display-4">{{ recipe.name }}</h1>
                          
             </div>
         </div>
-    </div>
-</div>
+   </div>
 
-<div class = "mainrecipe">
-    <div class = "recipe-content">
-   <!-- Like button     -->
-<div class="form-check">
-    <form action = "/like" method="POST">
+    <div class="row">  
+        <div class = "col-12 col-md-6" >
+            <img src="{{ recipe.image_url }}" class="recipe-img img-fluid" style="height: 300px;"  alt="recipe_image">
+        </div>
+        <div class="col-12 col-md-6">
+            <h4>Recipe by: {{ recipe.user.name}}
+               <!-- Like button     -->
+        <div class="float-end">
+        <form action = "/like" method="POST">
         
         {% if liked %}
         <button type="button" class="btn btn-primary mb-2" id = "like-button" disabled>Liked </button> 
@@ -27,42 +30,45 @@
         
         {% endif %}  
         <input type="hidden" id="recipeId" name="recipe_id" value={{ recipe.recipe_id }}></input>
-</form>
+        </form>
+        </div>
+        </h4>
+
+            <div class="recipe-icons">
+                <article>
+                      <i class="fas fa-clock"></i>
+                      <h5>prep time</h5>
+                      <p>{{ recipe.prep_time }}</p>
+                </article>
+                <article>
+                      <i class="far fa-clock"></i>
+                      <h5>cook time</h5>
+                      <p>{{ recipe.cooking_time }}</p>
+                </article>
+                <article>
+                    <i class="fa fa-heart"></i>
+                    <h5>Likes</h5>
+                    <p>{{ recipe.likes|length }}</p>
+              </article>
+              </div>
+        </div>
+
+    </div>
+    <div class ="row">
+        <div class = "col-12 col-md-8">
+            <h4>Instructions</h4>
+            <ul><p>{{ recipe.instructions }}</p></ul>
+        </div>
+            <div class = " col-12 col-md-4">
+                <h4>Ingredients</h4>
+                {% for ingredient in recipe.recipe_ingredients %}
+                        <ul>  <li>{{ ingredient.ingredient.name }}</li> </ul>
+                          {% endfor %} 
+            </div>
+        </div>
+    </div>
+
 </div>
-     
-    <img src="{{ recipe.image_url }}" class="recipe-img" style="height: 300px;"  alt="recipe_image">
-    <h4>Recipe by: {{ recipe.user.name}}</h4>
-</div>
-<div class="recipe-icons">
-    <article>
-          <i class="fas fa-clock"></i>
-          <h5>prep time</h5>
-          <p>{{ recipe.prep_time }}</p>
-    </article>
-    <article>
-          <i class="far fa-clock"></i>
-          <h5>cook time</h5>
-          <p>{{ recipe.cooking_time }}</p>
-    </article>
-    <article>
-        <i class="fa fa-heart"></i>
-        <h5>Likes</h5>
-        <p>{{ recipe.likes|length }}</p>
-  </article>
-  </div>
-
-
-<div class = "recipe-content">
-    <h4>Instructions</h4>
-    <ul><p>{{ recipe.instructions }}</p></ul>
-    <h4>Ingredients</h4>
-    {% for ingredient in recipe.recipe_ingredients %}
-            <ul>  <li>{{ ingredient.ingredient.name }}</li> </ul>
-              {% endfor %}
-     
-      
-    
-
 </body>
 
 

@@ -8,14 +8,6 @@
     text-align: center;
 }
 
-/* MY HOMEPAGE */
-
-/* .homepage{
-
-  font-family: "Source Sans Pro", sans-serif;
-  
-} */
-
 
 .image-container { 
 
@@ -84,7 +76,7 @@ h4 {
    
   color:rgb(12, 61, 45);
   margin: 1.5rem;
-  
+
 }
 
  
@@ -203,9 +195,9 @@ div.card-body{
   margin: 1.5px;
   width: 100%;
   align-self: left;
-  background-image: url("img/secondary.jpg");
+  /* background-image: url("img/secondary.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   font-family: "Source Sans Pro", sans-serif
 }
 div.form-group{
@@ -245,6 +237,13 @@ body.recipedetail{
   background-color: #f0ecec;
   background-image: none;
 }
+div.card.text-center
+{
+  background-image: url("img/secondary.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
 
 div.mainrecipe{
   display: grid;
@@ -273,7 +272,7 @@ div.mainrecipe{
 .recipe-img{
   height: 400px;
   align-self: center;
-  margin: 50px;
+  margin: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
 }
@@ -282,11 +281,4 @@ div.mainrecipe{
   display: grid;
   align-self: right;
   right: 70%;
-}
-button#like-button{
-  display: grip;
-  position:absolute;
-  
-  right: 20%;
-  top: 35%;
 }

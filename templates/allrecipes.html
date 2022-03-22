@@ -1,35 +1,30 @@
 {% extends 'base.html' %} {% block title %}All Recipes{% endblock %} {% block body %}
 
-<!-- <div class="container-fluid">
-    <h1 class="title">Explore all Recipes!</h1>
-    {% for recipe in recipes %}
-    <ul>
-        <li>
-            <a href="/recipes/{{ recipe.recipe_id }}">
-              {{ recipe.name }}
-              {# <!-- {{ recipe.Instructions }} --> #}
-            </a> 
-            
-        </li>
-    </ul> -->
-<!-- 
-{% endfor %} -->
-
-
-<div class="card-deck">
-    {% for recipe in recipes %}
+<body>
+<div class="container">
+  {% for recipe in recipes %}
+  <div class="row">
+    <div class = 'col'>
+    <div class="card-deck">
+      <div class="card">
+    
     <div class="card" href="/recipes/{{ recipe.recipe_id }}">
-        <a href="/recipes/{{ recipe.recipe_id }}">
-      <img class="card-img-top" src="{{ recipe.image_url }}" alt="Card image cap" >
+       
+      <img class="card-img-top" src="{{ recipe.image_url }}" alt="Card image cap"> 
       <div class="card-body">
-        <h5 class="card-title">{{ recipe.name }} </h5>
+        <h5 class="card-title"><a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></h5>
         <p class="card-text">Recipe created by: {{ recipe.user.name }}</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">Last updated {{ recipe.updated_at }}</small>
       </div>
     </div>
-    
+  </div>
+    </div>    
     {% endfor %}
   </div>
+</div>
+</div>
+
   {% endblock body %}
+</body>

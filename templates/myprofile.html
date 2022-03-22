@@ -5,32 +5,43 @@
 {% block body %}
 
 
-
-
-
-      <div class="jumbotron">
-        <h1 class="display-4">{{ user.name }}'s Recipes: </h1>
-        <ul>
-        {% for recipe in user.recipes %}
-        <p class="lead">  <li><a href= "/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></li></p>
+<div class="container">
+  <div class="row">
+      <!-- <div class="jumbotron jumbotron-fluid"> -->
+        <div class = "col-12 col-md-6">
+          <h1 class="display-4">{{ user.name }}'s Recipes: </h1>
+          <ul>
+          {% for recipe in user.recipes %}
+          <p class="lead">  <li><a href= "/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a></li></p>
          
-        <img class="card-img-top" src="{{ recipe.image_url }}" alt="recipe_image" >
-        {% endfor %}
-        </ul>
-       
+          <img class="card-img-top" src="{{ recipe.image_url }}" alt="recipe_image" >
+          {% endfor %}
+          </ul>
+        </div>
+        <!-- <div class="jumbotron jumbotron-fluid"> -->
+        <div class = "col-12 col-md-6">
+          <h1 class="display-4">Recipes {{ user.name }} liked: </h1>
+          <ul>
+            {% for like in user.likes %}
+            <p class="lead">  <li><a href= "/recipes/{{ like.recipe_id }}">{{ like.recipe.name }}</a></li></p>
+             
+            <img class="card-img-top" src="{{ like.recipe.image_url }}" alt="recipe_image" >
+            {% endfor %}
+            </ul>
+          </ul>
+        </div>
       </div>
-      
-      <div class="jumbotron">
-        <h1 class="display-4">Recipes {{ user.name }} liked: </h1>
-        <ul>
-        {% for like in user.likes %}
-        <p class="lead">  <li><a href= "/recipes/{{ like.recipe_id }}">{{ like.recipe.name }}</a></li></p>
-         
-        <img class="card-img-top" src="{{ like.recipe.image_url }}" alt="recipe_image" >
-        {% endfor %}
-        </ul>
+  </div>
+</div>
+          
        
-      </div> 
+</div>
+      
+    
+        
+        
+       
+   
 
     <div class="jumbotron">
         <h1 class="display-4">View {{ user.name }}'s pantry by date: </h1>
@@ -44,9 +55,16 @@
               {{ key }}
             </button>
           </h2>
-          <div id="{{ 'collapse'+ key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div id="{{ 'collapse'+ key }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>{{ value }}.</strong> 
+              <ul>
+              {% for ingredient in value %}
+                <li>
+                {{ ingredient }}
+              </li>
+              {% endfor %}
+              </ul>
+
             </div>
           </div>
         </div>

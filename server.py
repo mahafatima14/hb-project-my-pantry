@@ -60,7 +60,7 @@ def process_login():
         session["user_name"] = user.name
         session["user_id"] = user.user_id
 
-        flash(f"Welcome back, {user.name}! Lets get cooking!")
+        flash(f"Welcome {user.name}! Lets get cooking!")
 
         
         return redirect(f"/users/{user.user_id}")  
@@ -306,7 +306,11 @@ def like_a_recipe():
 
     return redirect(f'/recipes/{recipe.recipe_id}')
 
- 
+@app.route('/about') 
+def about():
+    """About me page with contact detail"""
+
+    return render_template('about.html')
 
 
 
