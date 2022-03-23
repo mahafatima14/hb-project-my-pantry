@@ -282,3 +282,12 @@ div.mainrecipe{
   align-self: right;
   right: 70%;
 }
+img#mypicture{
+
+  width:60%;
+  align-self: center;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+
+}

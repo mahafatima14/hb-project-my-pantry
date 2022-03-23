@@ -1,6 +1,6 @@
 # MyPantry
 
-MyPantry is a full stack web application that connects people through food. It sims to reduce food waste by curating recipes based on the ingredients you have on hand. It also allows to posts recipes to their profiles and like + save recipes fellow users have posted.
+MyPantry is a full stack web application that connects people through food. It aims to reduce food waste by curating recipes based on the ingredients you have on hand. It also allows to posts recipes to their profiles and like + save recipes fellow users have posted.
 
 <img src="static/img/Capture-1.JPG">
 ## Navigation
@@ -15,7 +15,7 @@ MyPantry is a full stack web application that connects people through food. It s
 
 After the user is authenticated, they are taken to the landing page where they have three options:
 
-<img src="static/img/Capture-2.JPG">
+
  
 <details><summary>Option 1: Enter a Recipe</summary>
 <p>

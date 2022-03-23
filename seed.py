@@ -26,6 +26,9 @@ def load_users():
     second_user= model.User(name = "Harry Potter", email = "test1@test.test", password = "test")
     model.db.session.add(second_user)
 
+    third_user= model.User(name = "Hermoine G", email = "test3@test.test", password = "test")
+    model.db.session.add(third_user)
+
     #commit users to the database
     model.db.session.commit()
 
@@ -65,6 +68,20 @@ def load_recipes():
       
     )
     model.db.session.add(chocolatechip_cookies)
+    model.db.session.commit() 
+
+    salad = model.Recipe(
+        name ='My Fav Salad',
+        image_url ='/static/img/salad.jpg',
+        instructions = 'Mix them up!.',
+        created_at = '0 day ago',
+        updated_at = '0 day ago',
+        prep_time = '5 mins',
+        cooking_time = '1 mins',
+        user_id = 3
+      
+    )
+    model.db.session.add(salad)
     model.db.session.commit() 
 
     chicken_macaroni_salad = model.Recipe(
@@ -292,11 +309,21 @@ def load_recipe_ingredients():
     #~~~~~~~~~~~~~~Recipe3~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     recipe_chickenmacaronisalad = model.Recipe.query.filter_by(name = 'Cold Chicken Macaroni Salad').first()
-    recipe_chickenmacaronisalad_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'Mayonnaise') | (model.Ingredient.name == 'Distilled white vineger') | (model.Ingredient.name == 'Bell Peppers') | (model.Ingredient.name == 'yellow mustard'))
+    recipe_chickenmacaronisalad_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'whole chicken') | (model.Ingredient.name == 'salt') | (model.Ingredient.name == 'pepper') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'celery') | (model.Ingredient.name == 'carrot') | (model.Ingredient.name == 'Mayonnaise') | (model.Ingredient.name == 'Distilled white vineger') | (model.Ingredient.name == 'Bell Peppers') | (model.Ingredient.name == 'yellow mustard')).all()
     
     for ingredient in recipe_chickenmacaronisalad_ingredients:
         recipe_ingredient = model.RecipeIngredient(recipe = recipe_chickenmacaronisalad, ingredient = ingredient)
         model.db.session.add(recipe_ingredient)
+    
+    #~~~~~~~~~~~~~~Recipe4~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    recipe_salad = model.Recipe.query.filter_by(name = 'My Fav Salad').first()
+    recipe_salad_ingredients = model.Ingredient.query.filter((model.Ingredient.name == 'celery') | (model.Ingredient.name == 'onion') | (model.Ingredient.name == 'pepper')).all()
+    
+    for ingredient in recipe_salad_ingredients:
+        recipe_ingredient = model.RecipeIngredient(recipe = recipe_salad, ingredient = ingredient)
+        model.db.session.add(recipe_ingredient)
+    
     
     
     
