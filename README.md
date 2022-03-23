@@ -121,7 +121,7 @@ Images by Brooke Lark from unsplash.com
 ## <a name="about-developer"></a>About the Developer
 
 MyPantry is created by Maha Fatima, a full stack Software engineer in the Bay Area, San Francisco. She comes from a non-traditional background, she completed her Hon. BSc in Biomedical sciences from the University of Waterloo and throughout her degree and after, she worked at the pharmacy and labs as a chemist. She is a career-driven individual who went on to get her PMP and scrum master certifications. 
-Upon her move to California, she got exposed to the tech world and enrolled in Hackbright's Intro to Python 101 course and fell in love with the problem solving aspect of it and leveraging technology and automation to create solutions. She went on to complete Hackbright's prep course and enrolled in Hackbrights Software engineering fellowship program - April 2022.
+Upon her move to California, she got exposed to the tech world and enrolled in Hackbright's Intro to Python 101 course and fell in love with the problem solving, utilizing software, and automation to create solutions. She went on to complete Hackbright's prep course and enrolled in Hackbrights Software engineering fellowship program - April 2022.
 
 <img src="static/img/contactcard.jpg">
 
