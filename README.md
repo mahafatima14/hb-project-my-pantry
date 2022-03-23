@@ -21,7 +21,7 @@ After the user is authenticated, they are taken to the landing page where they h
 <p>
 
 #### This lets the user enter recipes they would like to be saved on their profile. JavaScripts event handlers are used to add quantities in the text boxes that show up after an ingredient is entered.
-<img src="static/img/Capture-1.JPG">
+
 </p>
 </details>
 
@@ -36,7 +36,7 @@ After the user is authenticated, they are taken to the landing page where they h
 <details><summary>Option 3: View my pantry</summary>
 <p>
 
-#### This features leads the profile page where the user is able to see the recipes they have posted, fellow users recipes which they have liked and previous pantry submissions they have made, sorted into a Bootstrap accordion by date stamp.
+#### This feature leads the profile page where the user is able to see the recipes they have posted, fellow users recipes which they have liked and previous pantry submissions they have made, sorted into a Bootstrap accordion by date stamp.
 
 </p>
 </details>
@@ -120,5 +120,8 @@ Images by Brooke Lark from unsplash.com
 
 ## <a name="about-developer"></a>About the Developer
 
-<i class="fa fa-github"></i>
+MyPantry is created by Maha Fatima, a full stack Software engineer in the Bay Area, San Francisco. She comes from a non-traditional background, she completed her Hon. BSc in Biomedical sciences from the University of Waterloo and throughout her degree and after, she worked at the pharmacy and labs as a chemist. She is a career-driven individual who went on to get her Project management and Agile master certifications. 
+Upon her move to California, she got exposed to the tech world and enrolled in Hackbrights Intro to Python 101 course and fell in love with the problem solving aspect of it. She went on to complete Hackbrights prep course and enrolled in Hackbrights Software engineering fellowship program - April 2022.
+
+<img src="static/img/contactcard.jpg">
 
