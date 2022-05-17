@@ -1,6 +1,6 @@
 """seeding data into our database"""
 import os
-# from datetime import datetime
+from datetime import datetime
 
 import crud
 import model

@@ -115,17 +115,17 @@ def show_recipe(recipe_id):
 
 
        
-@app.route("/users")
-def show_users():
-    """Display all users"""
+# @app.route("/users")
+# def show_users():
+#     """Display all users"""
 
-    user = session.get("user_email")
-    if user:
-        users = crud.display_users()
-        return render_template('allusers.html', users = users)
-    else:
-        flash("Please log in to continue!")
-        return redirect("/")
+#     user = session.get("user_email")
+#     if user:
+#         users = crud.display_users()
+#         return render_template('allusers.html', users = users)
+#     else:
+#         flash("Please log in to continue!")
+#         return redirect("/")
 
 
 
@@ -133,31 +133,18 @@ def show_users():
 
 @app.route("/users/<user_id>")
 def show_user(user_id):
-    """Show details on a particular user."""
+    """Show the landing page after user logs in ."""
 
     user = session.get("user_email")
     if user == user:
         user = crud.get_user_by_id(user_id)
-        ingredients = crud.display_ingredients() 
-        submissions = {}
 
-        #key is the date, value are the ingredients
-      
-        for ingredient in user.pantry_ingredients:
-            
-        
-            submitted_at_date = ingredient.submitted_at.strftime("%Y-%b-%d")
-            if submitted_at_date in submissions:
-                submissions[submitted_at_date].add(ingredient.ingredient.name)
-            else:
-                submissions[submitted_at_date] = set([ingredient.ingredient.name])
-           
-        print("submissions^^^^^^^^^^^^^^^^^^^", submissions)
-
-        return render_template("userdetail.html", user = user, ingredients = ingredients, submissions = submissions)    
+        return render_template("userdetail.html", user = user)    
     else:
         flash("Please log in to continue!")
         return redirect("/")
+
+
 
 @app.route('/myprofile')
 def show_my_profile():
